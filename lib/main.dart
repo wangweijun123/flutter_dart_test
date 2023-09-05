@@ -2,6 +2,7 @@ import 'dart:isolate';
 
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:fultter_dart_sample/model/todo.dart';
 import 'package:provider/provider.dart';
 
 import 'package:http/http.dart' as http;
@@ -11,6 +12,7 @@ import 'package:align_positioned/align_positioned.dart';
 
 import 'StatefulLifecycle.dart';
 import 'listview.dart';
+import 'second_page.dart'; // 相对路径
 import 'shopping_list_item.dart';
 import 'use_shared_preferences.dart';
 import 'test_layout.dart';
@@ -82,6 +84,23 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
     }
   }
 
+  Future<void> _navigateAndDisplaySelection(BuildContext context) async {
+    // Navigator.push returns a Future that completes after calling
+    // Navigator.pop on the Selection Screen.
+    final result = await Navigator.push(
+      context,
+      // Create the SelectionScreen in the next step.
+      MaterialPageRoute(
+        builder: (context) => const SecondRoute(),
+        settings: const RouteSettings(
+          arguments: {'id': '123'},
+        ),
+      ),
+    );
+
+    print("返回结果 result = $result");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,8 +118,20 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const SecondRoute()),
+              MaterialPageRoute(
+                builder: (context) => const SecondRoute(),
+                settings: const RouteSettings(
+                  arguments: {'id': '123'},
+                ),
+              ),
             );
+          },
+        ),
+
+        ElevatedButton(
+          child: const Text('测试路由并返回结果'),
+          onPressed: () {
+            _navigateAndDisplaySelection(context);
           },
         ),
 
@@ -165,7 +196,10 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => SampleApp()),
+              MaterialPageRoute(
+                  builder: (context) => const ListviewPage(
+                        todo: Todo('this is title', 'this is desc'),
+                      )),
             );
           },
         ),
@@ -211,91 +245,6 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
           },
         ),
       ]),
-    );
-  }
-}
-
-class SecondRoute extends StatelessWidget {
-  const SecondRoute({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Second Route'),
-      ),
-      body: Column(children: [
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Go back!'),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            print("click me");
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ThirdPage()),
-            );
-          },
-          child: const Text('测试listview'),
-        ),
-      ]),
-    );
-  }
-}
-
-class ThirdPage extends StatefulWidget {
-  @override
-  State<ThirdPage> createState() => _ThirdPageState();
-}
-
-// 下面的例子展示了异步加载数据并将之展示在 ListView 内
-class _ThirdPageState extends State<ThirdPage> {
-// {
-//   "userId": 1,
-//   "id": 2,
-//   "title": "qui est esse",
-//   "body": "est rerum ...."
-// },
-  List widgets = [];
-
-  @override
-  void initState() {
-    super.initState();
-    loadData();
-  }
-
-  void loadData() async {
-    var dataURL = Uri.parse('https://jsonplaceholder.typicode.com/posts');
-    http.Response response = await http.get(dataURL);
-    setState(() {
-      var jsonBody = response.body;
-      print("....jsonBody = $jsonBody");
-      widgets = jsonDecode(jsonBody);
-    });
-  }
-
-  Widget getRow(int i) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: Text("Row ${widgets[i]["title"]}"),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('第三个界面'),
-      ),
-      body: ListView.builder(
-        itemCount: widgets.length,
-        itemBuilder: (context, position) {
-          return getRow(position);
-        },
-      ),
     );
   }
 }
