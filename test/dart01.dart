@@ -46,6 +46,8 @@ multi-line string.""";
 
   // These work in a const string.
   const aConstNum = 0;
+  // aConstNum = 2 常量不能再次赋值
+
   const aConstBool = true;
   const aConstString = 'a constant string';
 
@@ -94,6 +96,8 @@ void testCollection() {
   var aListOfString3 = ['one', 'two', 'three'];
 
   final aSetString = {'a', 'b', 'c'};
+  // aSetString = {'a', 'b', 'c'}; // 也不能再次赋值
+
   Set<String> aSetString2 = {'a', 'b', 'c'};
 
   final aMap = {'one': 1, 'tow': 2};
@@ -993,7 +997,7 @@ void testType() {
   // 对局部变量 使用var
   var name4 = "bob";
 
-  // 常量(编译时常量)
+  // 常量(编译时常量)， const 变量是编译时常量
   const name5 = 'Bob'; // Without a type annotation
   // name5 = "" bad
 
@@ -1433,8 +1437,21 @@ void testDartType() {
   print("$a, a is ${a is String}");
 }
 
+class MyConst {
+  // 类级别的常量必须加static const
+  static const max = 100;
+  final int a;
+
+  MyConst(this.a);
+}
+
+void testConst() {
+  var myConst = MyConst(1);
+  print("myConst.a = ${myConst.a}");
+}
+
 void main() {
-  testDartType();
+  // testDartType();
 
   // testYingShi();
 

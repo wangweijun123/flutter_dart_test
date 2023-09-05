@@ -12,7 +12,7 @@ class TestStatefulLifecycle extends StatefulWidget {
 
 class _TestStatefulLifecycleState extends State<TestStatefulLifecycle> {
   int num = 0;
-
+  // 常量如果在类级别，需要加 static
   static const platform = MethodChannel('samples.flutter.dev/battery');
   // Get battery level.
   String _batteryLevel = 'Unknown battery level.';
