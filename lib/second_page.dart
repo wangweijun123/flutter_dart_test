@@ -37,6 +37,7 @@ class SecondRoute extends StatelessWidget {
           },
           child: const Text('测试listview'),
         ),
+        Image.asset('asset/image/avatar.jpg'),
       ]),
     );
   }
