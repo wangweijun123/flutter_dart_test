@@ -5,25 +5,18 @@ import 'package:image_picker/image_picker.dart';
 
 import '../gen/assets.gen.dart';
 import '../log_util.dart';
+import 'mine_page_controller.dart';
+import 'package:get/get.dart';
 
-class MinePage extends StatefulWidget {
-  @override
-  State<MinePage> createState() => _MinePageState();
-}
-
-class _MinePageState extends State<MinePage> {
+class MinePage extends StatelessWidget {
   static const IMAGE_HEIGHT = 138.5;
 
-  String _imagePath = Assets.image.defaultPhoto.path;
-
-  void changeImagePath(String imagePath) {
-    setState(() {
-      _imagePath = imagePath;
-    });
-  }
+  late MinePageController controller;
 
   @override
   Widget build(BuildContext context) {
+    controller = MinePageController();
+
     return Scaffold(
       // appBar: AppBar(
       //   title: const Text('我的主页'),
@@ -33,13 +26,12 @@ class _MinePageState extends State<MinePage> {
       body: Stack(
         children: [
           GestureDetector(
-            child: TImage(
-              _imagePath,
-              width: double.infinity,
-              height: IMAGE_HEIGHT,
-            ),
+            child: Obx(() => TImage(
+                  controller.imagePath.value,
+                  width: double.infinity,
+                  height: IMAGE_HEIGHT,
+                )),
             onTap: () {
-              // changeImagePath(Assets.image.girl.path);
               myPrint('选择相册');
               openImagetPicker();
             },
@@ -54,7 +46,7 @@ class _MinePageState extends State<MinePage> {
     var path = xfile?.path;
     myPrint(path);
     if (path != null) {
-      changeImagePath(path);
+      controller.imagePath.value = path;
     }
   }
 }
