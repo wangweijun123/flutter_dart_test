@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:fultter_dart_sample/widget/t_image.dart';
-// import "package:images_picker/images_picker.dart";
-
 import 'package:image_picker/image_picker.dart';
 
 import '../gen/assets.gen.dart';
@@ -25,21 +24,28 @@ class _MinePageState extends State<MinePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        GestureDetector(
-          child: TImage(
-            _imagePath,
-            width: double.infinity,
-            height: IMAGE_HEIGHT,
+    return Scaffold(
+      // appBar: AppBar(
+      //   title: const Text('我的主页'),
+      // ),
+
+      // Stack 默认包裹内容
+      body: Stack(
+        children: [
+          GestureDetector(
+            child: TImage(
+              _imagePath,
+              width: double.infinity,
+              height: IMAGE_HEIGHT,
+            ),
+            onTap: () {
+              // changeImagePath(Assets.image.girl.path);
+              myPrint('选择相册');
+              openImagetPicker();
+            },
           ),
-          onTap: () {
-            // changeImagePath(Assets.image.girl.path);
-            myPrint('选择相册');
-            openImagetPicker();
-          },
-        ),
-      ],
+        ],
+      ),
     );
   }
 

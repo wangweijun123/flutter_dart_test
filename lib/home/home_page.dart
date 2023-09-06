@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fultter_dart_sample/log_util.dart';
+import 'package:fultter_dart_sample/multi_test.dart';
 import 'package:get/get.dart';
 
 import '../other/other_page.dart';
@@ -23,10 +24,14 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(title: Obx(() => Text("Clicks: ${c.count}"))),
 
         // Replace the 8 lines Navigator.push by a simple Get.to(). You don't need context
-        body: Center(
-            child: ElevatedButton(
-                child: const Text("Go to Other"),
-                onPressed: () => Get.to(OtherPage()))),
+        body: Column(children: [
+          ElevatedButton(
+              child: const Text("不同页面controller共享实例，验证数据一致性问题"),
+              onPressed: () => Get.to(OtherPage())),
+          ElevatedButton(
+              child: const Text("跳转之前的例子"),
+              onPressed: () => Get.to(const FirstRoute())),
+        ]),
         floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add), onPressed: c.increment));
   }

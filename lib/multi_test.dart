@@ -13,7 +13,7 @@ import 'package:align_positioned/align_positioned.dart';
 import 'StatefulLifecycle.dart';
 import 'fijk_player.dart';
 import 'listview.dart';
-import 'mine/MinePage.dart';
+import 'mine/mine_page.dart';
 import 'second_page.dart'; // 相对路径
 import 'shopping_list_item.dart';
 import 'use_dio_file_download.dart';
@@ -34,11 +34,6 @@ void main2() {
   runApp(const MaterialApp(
     title: 'Navigation Basics',
     home: FirstRoute(),
-
-    // todo
-    // routes: <String, WidgetBuilder>{
-    //   '/a': (context) => ThirdPage()
-    // },
   ));
 }
 
@@ -114,22 +109,6 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
         // SingleChildScrollView 相当于android ScrollView 垂直
         child: Column(children: [
           Text(Strings.welcomeMessage),
-
-          //
-          ElevatedButton(
-            child: const Text('get 测试'),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MinePage(),
-                  settings: const RouteSettings(
-                    arguments: {'id': '123'},
-                  ),
-                ),
-              );
-            },
-          ),
 
           ElevatedButton(
             child: const Text('我的主页'),
