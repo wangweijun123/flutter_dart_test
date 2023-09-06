@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'gen/assets.gen.dart';
 import 'third_page.dart';
 
 class SecondRoute extends StatelessWidget {
@@ -37,7 +38,17 @@ class SecondRoute extends StatelessWidget {
           },
           child: const Text('测试listview'),
         ),
-        Image.asset('asset/image/avatar.jpg'),
+        Image.asset(
+          'asset/image/girl.jpg',
+          width: 250,
+          height: 250,
+        ),
+        // 如果在项目中新增资源图片,重新生成gen目录 需要 1 flutter clean 2 flutter pub get 3 flutter packages pub run build_runner build
+        Image.asset(
+          Assets.image.girl.path,
+          width: 250,
+          height: 250,
+        ),
       ]),
     );
   }
