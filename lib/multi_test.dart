@@ -111,7 +111,8 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
       body: SingleChildScrollView(
         // SingleChildScrollView 相当于android ScrollView 垂直
         child: Column(children: [
-          Text(Strings.welcomeMessage),
+          Container(
+              width: 150, height: 30, child: Text(Strings.welcomeMessage)),
 
           ElevatedButton(
             child: const Text('嵌套滑动测试'),

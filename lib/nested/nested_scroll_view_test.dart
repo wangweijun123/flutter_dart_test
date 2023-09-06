@@ -39,8 +39,11 @@ class NestedScrollViewExample extends StatelessWidget {
                 sliver: SliverAppBar(
                   title:
                       const Text('Books'), // This is the title in the app bar.
+                  // 向上滑动的时候，控制appbar与tabbar是否固定
                   pinned: true,
-                  expandedHeight: 150.0,
+
+                  // expandedHeight 默认值是 appbar高度与bottom(指的是tabbar)的高度, 如果不超过这个值，滑动不了
+                  expandedHeight: 250.0,
                   // The "forceElevated" property causes the SliverAppBar to show
                   // a shadow. The "innerBoxIsScrolled" parameter is true when the
                   // inner scroll view is scrolled beyond its "zero" point, i.e.
@@ -51,6 +54,9 @@ class NestedScrollViewExample extends StatelessWidget {
                   // scroll views.
                   forceElevated: innerBoxIsScrolled,
                   bottom: TabBar(
+                    indicatorColor: Colors.red, // 指针的颜色
+                    // indicatorSize: TabBarIndicatorSize.label, // 指针长度大小
+                    // 这就是tabbar
                     // These are the widgets to put in each tab in the tab bar.
                     tabs: tabs.map((String name) => Tab(text: name)).toList(),
                   ),
