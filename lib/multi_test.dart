@@ -280,10 +280,51 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
               );
             },
           ),
+
+          buildCircleConer(),
+          buildCircleConer2(),
+          Text("tttt"),
         ]),
       ),
     );
   }
+}
+
+Widget buildCircleConer() {
+  return Container(
+    width: 200,
+    height: 200,
+    decoration: BoxDecoration(
+      color: const Color(0xff7c94b6),
+      image: const DecorationImage(
+        image: NetworkImage(
+            'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
+        fit: BoxFit.cover,
+      ),
+      border: Border.all(
+        width: 20,
+      ),
+      // radius 半径
+      borderRadius: BorderRadius.circular(12),
+    ),
+  );
+}
+
+Widget buildCircleConer2() {
+  return Container(
+    width: 200,
+    height: 200,
+    decoration: BoxDecoration(
+      image: const DecorationImage(
+        image: NetworkImage(
+            'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
+        fit: BoxFit.cover,
+      ),
+      border: Border.all(width: 20, color: Colors.red),
+      // radius 半径
+      borderRadius: BorderRadius.circular(100),
+    ),
+  );
 }
 
 class ActivityUiPage extends StatefulWidget {
