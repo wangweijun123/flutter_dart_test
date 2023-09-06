@@ -11,9 +11,11 @@ import 'dart:convert';
 import 'package:align_positioned/align_positioned.dart';
 
 import 'StatefulLifecycle.dart';
+import 'fijk_player.dart';
 import 'listview.dart';
 import 'second_page.dart'; // 相对路径
 import 'shopping_list_item.dart';
+import 'use_dio_file_download.dart';
 import 'use_shared_preferences.dart';
 import 'test_layout.dart';
 
@@ -107,144 +109,170 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
       appBar: AppBar(
         title: const Text('First Route'),
       ),
-      body: Column(children: [
-        // todo 图片显示有问题
-        // Image.asset('images/my_icon.jpeg'),
+      body: SingleChildScrollView(
+        // SingleChildScrollView 相当于android ScrollView 垂直
+        child: Column(children: [
+          // todo 图片显示有问题
+          // Image.asset('images/my_icon.jpeg'),
+          Text(Strings.welcomeMessage),
 
-        Text(Strings.welcomeMessage),
-
-        ElevatedButton(
-          child: const Text('测试路由'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const SecondRoute(),
-                settings: const RouteSettings(
-                  arguments: {'id': '123'},
+          ElevatedButton(
+            child: const Text('测试路由'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SecondRoute(),
+                  settings: const RouteSettings(
+                    arguments: {'id': '123'},
+                  ),
                 ),
-              ),
-            );
-          },
-        ),
-
-        ElevatedButton(
-          child: const Text('测试路由并返回结果'),
-          onPressed: () {
-            _navigateAndDisplaySelection(context);
-          },
-        ),
-
-        _getToggleChild(),
-
-        ElevatedButton(
-          child: const Text('点击我控制第二个widget显示文本或者按钮'),
-          onPressed: () {
-            _toggle();
-          },
-        ),
-
-        FadeTransition(
-          opacity: curve,
-          child: const FlutterLogo(
-            size: 100,
+              );
+            },
           ),
-        ),
 
-        ElevatedButton(
-          child: const Text('点击我开始动画'),
-          onPressed: () {
-            controller.forward();
-          },
-        ),
+          ElevatedButton(
+            child: const Text('测试路由并返回结果'),
+            onPressed: () {
+              _navigateAndDisplaySelection(context);
+            },
+          ),
 
-        CustomButton("我是自动以button"),
+          _getToggleChild(),
 
-        ElevatedButton(
-          child: const Text('使用Isolate (执行更多的 CPU 密集型操作)'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const IsolatePage()),
-            );
-          },
-        ),
+          ElevatedButton(
+            child: const Text('点击我控制第二个widget显示文本或者按钮'),
+            onPressed: () {
+              _toggle();
+            },
+          ),
 
-        ElevatedButton(
-          child: const Text('抽屉'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ActivityUiPage()),
-            );
-          },
-        ),
+          FadeTransition(
+            opacity: curve,
+            child: const FlutterLogo(
+              size: 100,
+            ),
+          ),
 
-        ElevatedButton(
-          child: const Text('align postion test'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => MaterialApp(home: AlignPositionTest())),
-            );
-          },
-        ),
+          ElevatedButton(
+            child: const Text('点击我开始动画'),
+            onPressed: () {
+              controller.forward();
+            },
+          ),
 
-        ElevatedButton(
-          child: const Text('listview test'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const ListviewPage(
-                        todo: Todo('this is title', 'this is desc'),
-                      )),
-            );
-          },
-        ),
+          CustomButton("我是自动以button"),
 
-        ElevatedButton(
-          child: const Text('shared prefenrece test'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => TestSharedPreference()),
-            );
-          },
-        ),
+          ElevatedButton(
+            child: const Text('使用Isolate (执行更多的 CPU 密集型操作)'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const IsolatePage()),
+              );
+            },
+          ),
 
-        ElevatedButton(
-          child: const Text('shop test'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => TestShopping()),
-            );
-          },
-        ),
+          ElevatedButton(
+            child: const Text('抽屉'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ActivityUiPage()),
+              );
+            },
+          ),
 
-        ElevatedButton(
-          child: const Text('layout test'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => TestLayout()),
-            );
-          },
-        ),
+          ElevatedButton(
+            child: const Text('align postion test'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        MaterialApp(home: AlignPositionTest())),
+              );
+            },
+          ),
 
-        ElevatedButton(
-          child: const Text('测试stateful组件的生命周期'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const TestStatefulLifecycle()),
-            );
-          },
-        ),
-      ]),
+          ElevatedButton(
+            child: const Text('listview test'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const ListviewPage(
+                          todo: Todo('this is title', 'this is desc'),
+                        )),
+              );
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('shared prefenrece test'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TestSharedPreference()),
+              );
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('shop test'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TestShopping()),
+              );
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('layout test'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TestLayout()),
+              );
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('测试stateful组件的生命周期'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const TestStatefulLifecycle()),
+              );
+            },
+          ),
+
+          // ElevatedButton(
+          //   child: const Text('测试stateful组件的生命周期'),
+          //   onPressed: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(
+          //           builder: (context) => VideoScreen(
+          //               url:
+          //                   'https://sample-videos.com/video123/flv/240/big_buck_bunny_240p_10mb.flv')),
+          //     );
+          //   },
+          // ),
+
+          ElevatedButton(
+            child: const Text('dio 测试下载'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FileDownloadPage()),
+              );
+            },
+          ),
+        ]),
+      ),
     );
   }
 }

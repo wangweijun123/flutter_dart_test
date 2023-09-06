@@ -2,6 +2,9 @@
 
 A new Flutter project.
 
+测试视频地址:
+https://sample-videos.com/video123/flv/240/big_buck_bunny_240p_10mb.flv
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
