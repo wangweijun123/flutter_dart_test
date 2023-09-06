@@ -24,7 +24,7 @@ import 'test_layout.dart';
 
 const String TAG = "duanxia";
 
-void main() {
+void main2() {
   // 应用的起点
 
   print("$TAG main ...");
@@ -116,6 +116,20 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
           Text(Strings.welcomeMessage),
 
           //
+          ElevatedButton(
+            child: const Text('get 测试'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MinePage(),
+                  settings: const RouteSettings(
+                    arguments: {'id': '123'},
+                  ),
+                ),
+              );
+            },
+          ),
 
           ElevatedButton(
             child: const Text('我的主页'),

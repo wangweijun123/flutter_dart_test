@@ -62,7 +62,8 @@ dev_dependencies:
 
   # 图片选择插件(machao)
   image_picker: ^0.8.5+3
-#  images_picker: ^1.2.11
+  #
+  get: ^4.6.5
 
 
 # For information on the generic Dart part of this file, see the
