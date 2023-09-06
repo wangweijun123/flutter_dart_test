@@ -3,6 +3,7 @@ import 'dart:isolate';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:fultter_dart_sample/model/todo.dart';
+import 'nested/nested_scroll_view_test3.dart';
 import 'package:provider/provider.dart';
 
 import 'package:http/http.dart' as http;
@@ -14,6 +15,8 @@ import 'StatefulLifecycle.dart';
 import 'fijk_player.dart';
 import 'listview.dart';
 import 'mine/mine_page.dart';
+import 'nested/nested_scroll_view_test.dart';
+import 'nested/nested_scroll_view_test2.dart';
 import 'second_page.dart'; // 相对路径
 import 'shopping_list_item.dart';
 import 'use_dio_file_download.dart';
@@ -109,6 +112,42 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
         // SingleChildScrollView 相当于android ScrollView 垂直
         child: Column(children: [
           Text(Strings.welcomeMessage),
+
+          ElevatedButton(
+            child: const Text('嵌套滑动测试'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NestedScrollViewExampleApp(),
+                ),
+              );
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('嵌套滑动测试2'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NestedScrollViewExampleApp2(),
+                ),
+              );
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('嵌套滑动测试3'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NestedScrollViewExampleApp3(),
+                ),
+              );
+            },
+          ),
 
           ElevatedButton(
             child: const Text('我的主页'),
