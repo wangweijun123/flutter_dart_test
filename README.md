@@ -2,6 +2,9 @@
 
 A new Flutter project.
 
+播放器插件
+https://github.com/hust-MC/flutter_player
+
 测试视频地址:
 https://sample-videos.com/video123/flv/240/big_buck_bunny_240p_10mb.flv
 

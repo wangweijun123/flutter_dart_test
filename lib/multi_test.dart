@@ -3,6 +3,7 @@ import 'dart:isolate';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:fultter_dart_sample/model/todo.dart';
+import 'package:fultter_dart_sample/videoplayer/video_player_page.dart';
 import 'listgridview/list_or_grid_test.dart';
 import 'nested/nested_scroll_view_test3.dart';
 import 'package:provider/provider.dart';
@@ -114,6 +115,20 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
         child: Column(children: [
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
+
+          ElevatedButton(
+            child: const Text('fijk player 测试'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => VideoScreen(
+                    url: 'https://www.w3schools.com/html/movie.mp4',
+                  ),
+                ),
+              );
+            },
+          ),
 
           ElevatedButton(
             child: const Text('grid or list 测试'),
