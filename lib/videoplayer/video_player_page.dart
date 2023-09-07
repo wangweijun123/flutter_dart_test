@@ -1,5 +1,7 @@
 import 'package:fijkplayer/fijkplayer.dart';
 import 'package:flutter/material.dart';
+import 'package:fultter_dart_sample/log_util.dart';
+import 'package:player/player.dart';
 
 class VideoScreen extends StatefulWidget {
   final String url;
@@ -20,6 +22,15 @@ class _VideoScreenState extends State<VideoScreen> {
   void initState() {
     super.initState();
     player.setDataSource(widget.url, autoPlay: true);
+
+    Player().getPlatformVersion().then(
+      (value) {
+        myPrint('response version = $value');
+      },
+      onError: (e) {
+        myPrint('onError = $e');
+      },
+    );
   }
 
   @override
