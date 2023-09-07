@@ -15,6 +15,7 @@ class _VideoListState extends State<VideoList> {
   void initState() {
     super.initState();
 
+    myPrint('controller.hashCode = ${widget.controller.hashCode} ....');
     widget.controller.fetchVideoList().then((value) {
       setState(() {
         myPrint('refresh ....');
@@ -39,10 +40,10 @@ class _VideoListState extends State<VideoList> {
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3), // crossAxisCount 每行几个item
         // item 总数
-        itemCount: widget.controller.dataList != null
-            ? widget.controller.dataList!.length
-            : 0,
+        itemCount: widget.controller.dataList!.length,
         itemBuilder: (context, index) {
+          var item = widget.controller.dataList![index];
+
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Stack(children: [
@@ -62,9 +63,9 @@ class _VideoListState extends State<VideoList> {
                     const SizedBox(
                       width: 5,
                     ),
-                    const Text(
-                      'xxx',
-                      style: TextStyle(color: Colors.red),
+                    Text(
+                      item.id,
+                      style: const TextStyle(color: Colors.red),
                     ),
                   ],
                 ),

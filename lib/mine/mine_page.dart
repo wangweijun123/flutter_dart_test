@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../gen/assets.gen.dart';
 import '../log_util.dart';
+import '../video_list/widget/video_list.dart';
 import '../widget/text_count.dart';
 import 'mine_page_controller.dart';
 import 'package:get/get.dart';
@@ -29,7 +30,7 @@ class _MinePageState extends State<MinePage>
 
   void initData() {
     controller = MinePageController();
-    myPrint('initData controller = ${controller.hashCode}');
+    // myPrint('initData controller = ${controller.hashCode}');
     controller.fetchUserZan();
   }
 
@@ -152,13 +153,13 @@ class _MinePageState extends State<MinePage>
               controller: tabController,
               labelColor: Colors.red,
               unselectedLabelColor: Colors.blue,
-              tabs: [
+              tabs: const [
                 Tab(
                   text: '作品',
                 ),
-                Tab(text: '作品'),
-                Tab(text: '作品'),
-                Tab(text: '作品'),
+                Tab(text: '私密'),
+                Tab(text: '收藏'),
+                Tab(text: '喜欢'),
               ],
             ),
           ),
@@ -167,10 +168,14 @@ class _MinePageState extends State<MinePage>
       body: TabBarView(
         controller: tabController,
         children: [
-          _buildGrid(),
-          _buildGrid(),
-          _buildGrid(),
-          _buildGrid(),
+          VideoList(),
+          VideoList(),
+          VideoList(),
+          VideoList(),
+          // _buildGrid(),
+          // _buildGrid(),
+          // _buildGrid(),
+          // _buildGrid(),
         ],
       ),
     );
