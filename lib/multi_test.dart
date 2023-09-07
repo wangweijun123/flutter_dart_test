@@ -3,7 +3,6 @@ import 'dart:isolate';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:fultter_dart_sample/model/todo.dart';
-import 'package:fultter_dart_sample/videoplayer/video_player_page.dart';
 import 'listgridview/list_or_grid_test.dart';
 import 'nested/nested_scroll_view_test3.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +17,7 @@ import 'listview.dart';
 import 'mine/mine_page.dart';
 import 'nested/nested_scroll_view_test.dart';
 import 'nested/nested_scroll_view_test2.dart';
+import 'player/player_page.dart';
 import 'second_page.dart'; // 相对路径
 import 'shopping_list_item.dart';
 import 'use_dio_file_download.dart';
@@ -121,9 +121,7 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => VideoScreen(
-                    url: 'https://www.w3schools.com/html/movie.mp4',
-                  ),
+                  builder: (context) => PlayerPage(),
                 ),
               );
             },

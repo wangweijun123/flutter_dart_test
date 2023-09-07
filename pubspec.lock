@@ -242,7 +242,7 @@ packages:
     source: hosted
     version: "2.1.0"
   fijkplayer:
-    dependency: "direct dev"
+    dependency: transitive
     description:
       name: fijkplayer
       sha256: e6098034e696ce448f5f289fb5b3fa363df5e606bdb418d52944c1dcb8e14cba
