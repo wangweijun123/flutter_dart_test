@@ -51,8 +51,8 @@ flutter:
         fileName: player_web.dart
 
   # To add assets to your plugin package, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+     - packages/player/assets/play.png
   #   - images/a_dot_ham.jpeg
   #
   # For details regarding assets in packages, see
