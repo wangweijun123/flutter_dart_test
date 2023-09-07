@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
+import 'package:fultter_dart_sample/log_util.dart';
+
+import 'list_gride_controller.dart';
 
 class GridLayoutTest extends StatelessWidget {
-  const GridLayoutTest({super.key});
+  GridLayoutTest({super.key});
 
   static const showGrid = true; // Set to false to show ListView
+
+  final ListOrGridController controller = ListOrGridController();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter layout demo',
+      title: 'list or gride layout demo',
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Flutter layout demo'),
@@ -21,17 +26,24 @@ class GridLayoutTest extends StatelessWidget {
 
   // #docregion grid
   Widget _buildGrid() => GridView.extent(
+      // 控制item 大小, 根据屏幕自动能排成多少列
       maxCrossAxisExtent: 150,
       padding: const EdgeInsets.all(4),
       mainAxisSpacing: 4,
       crossAxisSpacing: 4,
-      children: _buildGridTileList(30));
+      children: _buildGridTileList(controller.itemCount.value));
 
   // The images are saved with names pic0.jpg, pic1.jpg...pic29.jpg.
   // The List.generate() constructor allows an easy way to create
   // a list when objects have a predictable naming pattern.
-  List<Container> _buildGridTileList(int count) => List.generate(
-      count, (i) => Container(child: Image.asset('images/pic$i.jpg')));
+  List<Widget> _buildGridTileList(int count) => List.generate(count, (i) {
+        return GestureDetector(
+          child: Image.asset('images/pic$i.jpg'),
+          onTap: () {
+            myPrint('click item');
+          },
+        );
+      });
   // #enddocregion grid
 
   // #docregion list
