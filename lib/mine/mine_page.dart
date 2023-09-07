@@ -19,11 +19,22 @@ class _MinePageState extends State<MinePage>
     with SingleTickerProviderStateMixin {
   late MinePageController controller;
 
+  @override
+  void initState() {
+    super.initState();
+
+    initData();
+  }
+
+  void initData() {
+    controller = MinePageController();
+    myPrint('initData controller = ${controller.hashCode}');
+    controller.fetchUserZan();
+  }
+
   // hot reload:回调那些函数
   @override
   Widget build(BuildContext context) {
-    controller = MinePageController();
-
     final TabController tabController = TabController(length: 4, vsync: this);
 
     return NestedScrollView(
@@ -62,27 +73,29 @@ class _MinePageState extends State<MinePage>
                             const SizedBox(
                               height: 20,
                             ),
-                            const Row(
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 // 左边距直接使用
-                                SizedBox(
+                                const SizedBox(
                                   width: 100,
                                 ),
 
                                 Column(
                                   children: [
                                     Text("获赞"),
-                                    Text('23万'),
+                                    Obx(() {
+                                      return Text('${controller.zan.value}');
+                                    }),
                                   ],
                                 ),
-                                Column(
+                                const Column(
                                   children: [
                                     Text("关注"),
                                     Text('85334'),
                                   ],
                                 ),
-                                Column(
+                                const Column(
                                   children: [
                                     Text("粉丝"),
                                     Text('23889'),
