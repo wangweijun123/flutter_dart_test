@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../gen/assets.gen.dart';
 import '../log_util.dart';
+import '../widget/text_count.dart';
 import 'mine_page_controller.dart';
 import 'package:get/get.dart';
 
@@ -54,7 +55,7 @@ class _MinePageState extends State<MinePage>
                       // 背景墙
                       GestureDetector(
                         child: Obx(() => TImage(
-                              controller.imagePath.value,
+                              controller.imagePath,
                               width: double.infinity,
                               height: MinePage.IMAGE_HEIGHT,
                             )),
@@ -81,26 +82,18 @@ class _MinePageState extends State<MinePage>
                                   width: 100,
                                 ),
 
-                                Column(
-                                  children: [
-                                    Text("获赞"),
-                                    Obx(() {
-                                      return Text('${controller.zan.value}');
-                                    }),
-                                  ],
-                                ),
-                                const Column(
-                                  children: [
-                                    Text("关注"),
-                                    Text('85334'),
-                                  ],
-                                ),
-                                const Column(
-                                  children: [
-                                    Text("粉丝"),
-                                    Text('23889'),
-                                  ],
-                                ),
+                                Obx(() {
+                                  return TextCount("获赞", controller.zan);
+                                }),
+                                Obx(() {
+                                  return TextCount(
+                                      "关注", controller.focusAccount);
+                                }),
+
+                                Obx(() {
+                                  return TextCount(
+                                      "粉丝", controller.followAccount);
+                                }),
                               ],
                             ),
 
@@ -111,7 +104,7 @@ class _MinePageState extends State<MinePage>
 
                             // id
                             Container(
-                                margin: const EdgeInsets.fromLTRB(16, 16, 0, 0),
+                                margin: const EdgeInsets.fromLTRB(16, 0, 0, 20),
                                 child: const Text('id: 123456789')),
 
                             Row(
@@ -202,7 +195,7 @@ class _MinePageState extends State<MinePage>
     var path = xfile?.path;
     myPrint(path);
     if (path != null) {
-      controller.imagePath.value = path;
+      controller.imagePath = path;
     }
   }
 
