@@ -9,6 +9,134 @@
 
 import 'package:flutter/widgets.dart';
 
+class $ImagesGen {
+  const $ImagesGen();
+
+  /// File path: images/pic0.jpg
+  AssetGenImage get pic0 => const AssetGenImage('images/pic0.jpg');
+
+  /// File path: images/pic1.jpg
+  AssetGenImage get pic1 => const AssetGenImage('images/pic1.jpg');
+
+  /// File path: images/pic10.jpg
+  AssetGenImage get pic10 => const AssetGenImage('images/pic10.jpg');
+
+  /// File path: images/pic11.jpg
+  AssetGenImage get pic11 => const AssetGenImage('images/pic11.jpg');
+
+  /// File path: images/pic12.jpg
+  AssetGenImage get pic12 => const AssetGenImage('images/pic12.jpg');
+
+  /// File path: images/pic13.jpg
+  AssetGenImage get pic13 => const AssetGenImage('images/pic13.jpg');
+
+  /// File path: images/pic14.jpg
+  AssetGenImage get pic14 => const AssetGenImage('images/pic14.jpg');
+
+  /// File path: images/pic15.jpg
+  AssetGenImage get pic15 => const AssetGenImage('images/pic15.jpg');
+
+  /// File path: images/pic16.jpg
+  AssetGenImage get pic16 => const AssetGenImage('images/pic16.jpg');
+
+  /// File path: images/pic17.jpg
+  AssetGenImage get pic17 => const AssetGenImage('images/pic17.jpg');
+
+  /// File path: images/pic18.jpg
+  AssetGenImage get pic18 => const AssetGenImage('images/pic18.jpg');
+
+  /// File path: images/pic19.jpg
+  AssetGenImage get pic19 => const AssetGenImage('images/pic19.jpg');
+
+  /// File path: images/pic2.jpg
+  AssetGenImage get pic2 => const AssetGenImage('images/pic2.jpg');
+
+  /// File path: images/pic20.jpg
+  AssetGenImage get pic20 => const AssetGenImage('images/pic20.jpg');
+
+  /// File path: images/pic21.jpg
+  AssetGenImage get pic21 => const AssetGenImage('images/pic21.jpg');
+
+  /// File path: images/pic22.jpg
+  AssetGenImage get pic22 => const AssetGenImage('images/pic22.jpg');
+
+  /// File path: images/pic23.jpg
+  AssetGenImage get pic23 => const AssetGenImage('images/pic23.jpg');
+
+  /// File path: images/pic24.jpg
+  AssetGenImage get pic24 => const AssetGenImage('images/pic24.jpg');
+
+  /// File path: images/pic25.jpg
+  AssetGenImage get pic25 => const AssetGenImage('images/pic25.jpg');
+
+  /// File path: images/pic26.jpg
+  AssetGenImage get pic26 => const AssetGenImage('images/pic26.jpg');
+
+  /// File path: images/pic27.jpg
+  AssetGenImage get pic27 => const AssetGenImage('images/pic27.jpg');
+
+  /// File path: images/pic28.jpg
+  AssetGenImage get pic28 => const AssetGenImage('images/pic28.jpg');
+
+  /// File path: images/pic29.jpg
+  AssetGenImage get pic29 => const AssetGenImage('images/pic29.jpg');
+
+  /// File path: images/pic3.jpg
+  AssetGenImage get pic3 => const AssetGenImage('images/pic3.jpg');
+
+  /// File path: images/pic4.jpg
+  AssetGenImage get pic4 => const AssetGenImage('images/pic4.jpg');
+
+  /// File path: images/pic5.jpg
+  AssetGenImage get pic5 => const AssetGenImage('images/pic5.jpg');
+
+  /// File path: images/pic6.jpg
+  AssetGenImage get pic6 => const AssetGenImage('images/pic6.jpg');
+
+  /// File path: images/pic7.jpg
+  AssetGenImage get pic7 => const AssetGenImage('images/pic7.jpg');
+
+  /// File path: images/pic8.jpg
+  AssetGenImage get pic8 => const AssetGenImage('images/pic8.jpg');
+
+  /// File path: images/pic9.jpg
+  AssetGenImage get pic9 => const AssetGenImage('images/pic9.jpg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+        pic0,
+        pic1,
+        pic10,
+        pic11,
+        pic12,
+        pic13,
+        pic14,
+        pic15,
+        pic16,
+        pic17,
+        pic18,
+        pic19,
+        pic2,
+        pic20,
+        pic21,
+        pic22,
+        pic23,
+        pic24,
+        pic25,
+        pic26,
+        pic27,
+        pic28,
+        pic29,
+        pic3,
+        pic4,
+        pic5,
+        pic6,
+        pic7,
+        pic8,
+        pic9
+      ];
+}
+
 class $AssetImageGen {
   const $AssetImageGen();
 
@@ -101,6 +229,7 @@ class Assets {
 
   static const $AssetImageGen image = $AssetImageGen();
   static const $AssetVideoGen video = $AssetVideoGen();
+  static const $ImagesGen images = $ImagesGen();
 }
 
 class AssetGenImage {

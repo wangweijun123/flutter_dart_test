@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:fultter_dart_sample/log_util.dart';
 import 'package:path_provider/path_provider.dart';
 
 const String TAG = "duanxia";
@@ -68,13 +69,17 @@ class _FileDownloadPageState extends State<FileDownloadPage> {
 
   Future<void> downloadFile() async {
     final Directory tempDir = await getTemporaryDirectory();
-    var path = '${tempDir.path}/pub.html';
+    var path = '${tempDir.path}/movie.mp4';
     print('$TAG path = $path');
 
     var response = await dio.download(
-      'https://pub.flutter-io.cn/',
+      'https://www.w3schools.com/html/movie.mp4',
       path,
+      onReceiveProgress: (count, total) {
+        print(
+            '$TAG count = $count, total=$total, 完成度 ${count / (total * 1.0)}');
+      },
     );
-    print('$TAG response = $response');
+    print('$TAG response statusCode = ${response.statusCode}');
   }
 }

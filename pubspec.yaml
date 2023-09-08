@@ -64,11 +64,14 @@ dev_dependencies:
   image_picker: ^0.8.5+3
   #
   get: ^4.6.5
-
+  camera: ^0.10.5+4
 
   # 引入本地flutter插件
   player:
     path: player
+
+  json_serializable: ^6.7.1
+  json_annotation: ^4.8.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

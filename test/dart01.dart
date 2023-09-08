@@ -1,8 +1,11 @@
+import 'dart:convert';
 import 'dart:ffi';
 import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:fultter_dart_sample/log_util.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 void testInt() {
   int a = 4;
@@ -1450,7 +1453,43 @@ void testConst() {
   print("myConst.a = ${myConst.a}");
 }
 
+void testJsonDecode() {
+  const jsonString =
+      '{"text": "foo", "value": 1, "status": false, "extra": null}';
+
+  ///
+  final data = jsonDecode(jsonString);
+  print(data['text']); // foo
+  print('is a int = ${data['value']}'); // 1
+  print(data['status']); // false
+  print(data['extra']); // null
+  ///
+  const jsonArray = '''
+    [{"text": "foo", "value": 1, "status": true},
+     {"text": "bar", "value": 2, "status": false}]
+  ''';
+
+  ///
+  final List<dynamic> dataList = jsonDecode(jsonArray);
+  print(dataList[0]); // {text: foo, value: 1, status: true}
+  print(dataList[1]); // {text: bar, value: 2, status: false}
+  ///
+  final item = dataList[0];
+  print(item['text']); // foo
+  print(item['value']); // 1
+  print(item['status']); // false
+}
+
+void parseDataTime() {
+  var date = DateTime.parse('1969-07-20 20:18:04Z');
+  print(date.toString());
+}
+
 void main() {
+  parseDataTime();
+
+  // testJsonDecode();
+
   // testDartType();
 
   // testYingShi();
@@ -1562,6 +1601,6 @@ void main() {
   // testNull();
   // String? str;
   // upperCaseIt(str);
-  // testCollection();
+  testCollection();
   // testMyClass();
 }
