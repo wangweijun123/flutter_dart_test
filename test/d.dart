@@ -6,4 +6,14 @@ void main() {
   var classInC = ClassInC();
   classInC.a = 100;
   print("${classInC.a}");
+
+  // 不能使用_的变量
+  // classInC._b
+
+  print(num);
+  // 能引用其他文件的global函数
+  gloabMethod();
+
+  // 不能引入哦
+  // _gloabMethod2()
 }
