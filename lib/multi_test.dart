@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:fultter_dart_sample/model/todo.dart';
 import 'package:fultter_dart_sample/video_list/widget/video_list.dart';
 import 'camera/camera_page.dart';
+import 'easy_refresh_list/cdn/test_page_state.dart';
+import 'easy_refresh_list/easy_refresh_list.dart';
+import 'easy_refresh_list/sample_by_github/copy/example.dart';
+import 'easy_refresh_list/sample_by_github/example.dart';
 import 'listgridview/list_or_grid_test.dart';
+import 'listview.dart';
 import 'nested/nested_scroll_view_test3.dart';
 import 'package:provider/provider.dart';
 
@@ -15,12 +20,12 @@ import 'dart:convert';
 import 'package:align_positioned/align_positioned.dart';
 
 import 'StatefulLifecycle.dart';
-import 'listview.dart';
 import 'mine/mine_page.dart';
 import 'nested/nested_scroll_view_test.dart';
 import 'nested/nested_scroll_view_test2.dart';
 import 'obx/obx_test.dart';
 import 'obx/set_state_test.dart';
+import 'page_view/page_view_example.dart';
 import 'player/player_page.dart';
 import 'second_page.dart'; // 相对路径
 import 'shopping_list_item.dart';
@@ -118,6 +123,19 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
         child: Column(children: [
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
+
+          ElevatedButton(
+            child: const Text('pageView 测试'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PageViewExample(),
+                ),
+              );
+            },
+          ),
+
           //
           ElevatedButton(
             child: const Text('GetX 测试'),
@@ -331,6 +349,39 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
                           todo: Todo('this is title', 'this is desc'),
                         )),
               );
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('dynamic listview test'),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EasyRefreshListviewTest(),
+                  ));
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('官方 dynamic listview test'),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => GithuEasyRefrshListview(),
+                  ));
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('csdn dynamic listview test'),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TestPage(),
+                  ));
             },
           ),
 
