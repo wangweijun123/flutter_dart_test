@@ -19,6 +19,8 @@ import 'listview.dart';
 import 'mine/mine_page.dart';
 import 'nested/nested_scroll_view_test.dart';
 import 'nested/nested_scroll_view_test2.dart';
+import 'obx/obx_test.dart';
+import 'obx/set_state_test.dart';
 import 'player/player_page.dart';
 import 'second_page.dart'; // 相对路径
 import 'shopping_list_item.dart';
@@ -117,6 +119,29 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
           //
+          ElevatedButton(
+            child: const Text('GetX 测试'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => OBXTest(),
+                ),
+              );
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('set state 测试'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SetStateTest(),
+                ),
+              );
+            },
+          ),
 
           ElevatedButton(
             child: const Text('拍照'),
