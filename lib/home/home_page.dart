@@ -9,6 +9,7 @@ import 'home_page_controller.dart';
 // 应用的起点
 void main() => runApp(GetMaterialApp(home: HomePage()));
 
+// 使用StatelessWidget并节省一些RAM，有了Get你可能不再需要使用StatefulWidget。
 class HomePage extends StatelessWidget {
   @override
   Widget build(context) {
@@ -31,6 +32,13 @@ class HomePage extends StatelessWidget {
           ElevatedButton(
               child: const Text("跳转之前的例子"),
               onPressed: () => Get.to(const FirstRoute())),
+          Obx(() => Text(c.user.value.name)),
+          ElevatedButton(
+              child: const Text("Obx操作对象测试"),
+              onPressed: () {
+                print('更新username   ddddddddd');
+                c.updateUserName();
+              }),
         ]),
         floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add), onPressed: c.increment));

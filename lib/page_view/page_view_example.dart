@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fultter_dart_sample/log_util.dart';
 
 /// Flutter code sample for [PageView].
 
@@ -23,11 +24,15 @@ class PageViewExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    myPrint('PageViewExample build ...');
     final PageController controller = PageController();
     return Scaffold(
       appBar: AppBar(title: const Text('PageView Sample')),
       body: PageView(
         scrollDirection: Axis.vertical,
+        onPageChanged: (currentPage) {
+          myPrint('onPageChanged currentPage = $currentPage');
+        },
 
         /// [PageView.scrollDirection] defaults to [Axis.horizontal].
         /// Use [Axis.vertical] to scroll vertically.

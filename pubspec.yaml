@@ -88,6 +88,7 @@ flutter:
   assets:
     - asset/image/
     - asset/video/video1.mp4
+    - asset/video/video2.mp4
     - images/
   # To add assets to your application, add an assets section, like this:
   # assets:

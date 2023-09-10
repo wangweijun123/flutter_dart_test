@@ -73,12 +73,19 @@ class _VideoViewState extends State<VideoView> {
   }
 
   void onTapVideo() {
-    print('onTapVideo ...');
-    if (widget.player.state == FijkState.paused) {
-      widget.player.start();
-    } else {
-      widget.player.pause();
-    }
+    print('duanxia onTapVideo ...');
+
+    // if (widget.player.state == FijkState.paused) {
+    //   widget.player.start();
+    // } else {
+    //   widget.player.pause();
+    // }
+
+    widget.player.reset().then((value) {
+      print('duanxia 重置后设置新的资源');
+      widget.player
+          .setDataSource('asset:///asset/video/video2.mp4', autoPlay: true);
+    });
 
     setState(() {});
   }
