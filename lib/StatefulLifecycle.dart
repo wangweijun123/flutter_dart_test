@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'log_util.dart';
+
 // ctrol + enter 修改成StatefulWidget
 class TestStatefulLifecycle extends StatefulWidget {
   const TestStatefulLifecycle({super.key});
@@ -42,7 +44,7 @@ class _TestStatefulLifecycleState extends State<TestStatefulLifecycle> {
   @override
   void initState() {
     super.initState();
-    print("$hashCode initState ...");
+    myPrint("$hashCode initState ...");
     registerMethod();
   }
 
@@ -50,7 +52,7 @@ class _TestStatefulLifecycleState extends State<TestStatefulLifecycle> {
   void registerMethod() {
     platform.setMethodCallHandler((call) async {
       if (call.method == "getDartVersion") {
-        print("flutter_xxxx reply to dart version");
+        myPrint("flutter_xxxx reply to dart version");
         return getDartVersion();
       }
       return "not support version";
@@ -62,18 +64,18 @@ class _TestStatefulLifecycleState extends State<TestStatefulLifecycle> {
   @override
   void activate() {
     super.activate();
-    print("$hashCode activate ...");
+    myPrint("$hashCode activate ...");
   }
 
   @override
   void deactivate() {
     super.deactivate();
-    print("$hashCode deactivate ...");
+    myPrint("$hashCode deactivate ...");
   }
 
   @override
   Widget build(BuildContext context) {
-    print("$hashCode build ...");
+    myPrint("$hashCode build ...");
     // 放到子控件的名字上，按下 alt + entry 来新增加一个父层次
     return Scaffold(
       body: SafeArea(

@@ -23,7 +23,7 @@ class _VideoViewState extends State<VideoView> {
 
   @override
   Widget build(BuildContext context) {
-    print('build onTapVideo ...');
+    print('duanxia build ...');
     return Scaffold(
         appBar: AppBar(title: Text("Fijkplayer Example")),
         body: GestureDetector(
@@ -68,6 +68,7 @@ class _VideoViewState extends State<VideoView> {
   @override
   void dispose() {
     super.dispose();
+    print('duanxia build dispose ...');
     widget.player.release();
   }
 

@@ -204,6 +204,7 @@ class _MinePageState extends State<MinePage>
     }
   }
 
+  // 圆角头像
   Widget buildCircleConer2() {
     return Container(
       margin: const EdgeInsets.fromLTRB(16, MinePage.IMAGE_HEIGHT - 30, 0, 0),

@@ -16,8 +16,13 @@ class _PlayerPageState extends State<PlayerPage> {
   @override
   Widget build(BuildContext context) {
     var player = Player();
-    player.setCommonDataSource('https://www.w3schools.com/html/movie.mp4',
+    // player.setCommonDataSource('https://www.w3schools.com/html/movie.mp4',
+    //     autoPlay: true);
+
+    // "asset:///assets/butterfly.mp4"
+    player.setCommonDataSource('asset:///asset/video/video1.mp4',
         autoPlay: true);
+
     return VideoView(player);
   }
 }
