@@ -2,7 +2,6 @@ abstract class Vehicle {
   void moveForward(int meters);
 }
 
-
 base class Vehicle2 {
   void moveForward(int meters) {
     // 定义成base， 这个函数不能被覆盖，只能自己实现
@@ -24,9 +23,5 @@ class Car3 extends Vehicle3 {
 mixin class Both {}
 
 class UseAsMixin with Both {}
+
 class UseAsSuperclass extends Both {}
-
-
-
-
-
