@@ -4,6 +4,7 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:fultter_dart_sample/model/todo.dart';
 import 'package:fultter_dart_sample/video_list/widget/video_list.dart';
+import 'animation/test_animation.dart';
 import 'camera/camera_page.dart';
 import 'easy_refresh_list/cdn/test_page_state.dart';
 import 'easy_refresh_list/easy_refresh_list.dart';
@@ -312,6 +313,16 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
             child: const Text('点击我开始动画'),
             onPressed: () {
               controller.forward();
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('点击我进入动画界面'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TestAnimation()),
+              );
             },
           ),
 
