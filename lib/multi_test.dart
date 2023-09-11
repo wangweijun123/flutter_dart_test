@@ -198,6 +198,16 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
           ),
 
           ElevatedButton(
+            child: const Text('dio 测试下载'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FileDownloadPage()),
+              );
+            },
+          ),
+
+          ElevatedButton(
             child: const Text('grid or list 测试'),
             onPressed: () {
               Navigator.push(
@@ -438,16 +448,6 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
           //     );
           //   },
           // ),
-
-          ElevatedButton(
-            child: const Text('dio 测试下载'),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => FileDownloadPage()),
-              );
-            },
-          ),
 
           buildCircleConer(),
           buildCircleConer2(),

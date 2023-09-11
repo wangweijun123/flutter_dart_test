@@ -44,7 +44,7 @@ class _TestStatefulLifecycleState extends State<TestStatefulLifecycle> {
   @override
   void initState() {
     super.initState();
-    myPrint("$hashCode initState ...");
+    myPrint("_TestStatefulLifecycleState $hashCode initState ...");
     registerMethod();
   }
 
@@ -64,18 +64,19 @@ class _TestStatefulLifecycleState extends State<TestStatefulLifecycle> {
   @override
   void activate() {
     super.activate();
-    myPrint("$hashCode activate ...");
+    myPrint("_TestStatefulLifecycleState $hashCode activate ...");
   }
 
   @override
   void deactivate() {
     super.deactivate();
-    myPrint("$hashCode deactivate ...");
+    // state这个对象被移除
+    myPrint("_TestStatefulLifecycleState $hashCode deactivate ...");
   }
 
   @override
   Widget build(BuildContext context) {
-    myPrint("$hashCode build ...");
+    myPrint("_TestStatefulLifecycleState $hashCode build ...");
     // 放到子控件的名字上，按下 alt + entry 来新增加一个父层次
     return Scaffold(
       body: SafeArea(

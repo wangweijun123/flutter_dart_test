@@ -51,6 +51,7 @@ class _FileDownloadPageState extends State<FileDownloadPage> {
                           child: const Text('下载'),
                           onPressed: () {
                             downloadFile();
+                            // cancelDownload();
                             Navigator.of(context).pop();
                           },
                         ),
@@ -67,13 +68,22 @@ class _FileDownloadPageState extends State<FileDownloadPage> {
     super.dispose();
   }
 
+  void cancelDownload() {
+    myPrint('cancelDownload ...');
+    Future.delayed(const Duration(seconds: 2), () {
+      myPrint('One second has passed.'); // Prints after 1 second.
+      dio.close(force: true);
+      myPrint('cancelDownload finished');
+    });
+  }
+
   Future<void> downloadFile() async {
+    const url = 'https://media.w3.org/2010/05/sintel/trailer.mp4';
     final Directory tempDir = await getTemporaryDirectory();
     var path = '${tempDir.path}/movie.mp4';
     print('$TAG path = $path');
-
     var response = await dio.download(
-      'https://www.w3schools.com/html/movie.mp4',
+      url,
       path,
       onReceiveProgress: (count, total) {
         print(

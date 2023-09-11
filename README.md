@@ -20,3 +20,13 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+
+测试视频地址：
+
+http://www.w3school.com.cn/i/movie.mp4
+http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4
+http://vjs.zencdn.net/v/oceans.mp4
+https://media.w3.org/2010/05/sintel/trailer.mp4
+
