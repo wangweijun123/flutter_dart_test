@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fultter_dart_sample/model/todo.dart';
 import 'package:fultter_dart_sample/video_list/widget/video_list.dart';
 import 'animation/test_animation.dart';
+import 'animation/test_animation2.dart';
 import 'camera/camera_page.dart';
 import 'easy_refresh_list/cdn/test_page_state.dart';
 import 'easy_refresh_list/easy_refresh_list.dart';
@@ -322,6 +323,16 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => TestAnimation()),
+              );
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('点击进入我的红心'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TestAnimation2()),
               );
             },
           ),
