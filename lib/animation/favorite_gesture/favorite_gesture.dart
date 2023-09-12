@@ -32,6 +32,8 @@ class _FavoriteGestureState extends State<FavoriteGesture> {
 
   @override
   Widget build(BuildContext context) {
+    myPrint(
+        'xxxxxx _FavoriteGestureState  build iconOffsets = ${iconOffsets.length}');
     var iconStack = Stack(
         children: iconOffsets
             .map((e) => FavoriteAnimationIcon(

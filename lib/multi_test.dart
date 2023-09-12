@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fultter_dart_sample/model/todo.dart';
 import 'package:fultter_dart_sample/video_list/widget/video_list.dart';
 import 'animation/test_animation.dart';
-import 'animation/test_animation2.dart';
+import 'animation/favorite_gesture/me/test_animation2.dart';
 import 'camera/camera_page.dart';
 import 'easy_refresh_list/cdn/test_page_state.dart';
 import 'easy_refresh_list/easy_refresh_list.dart';

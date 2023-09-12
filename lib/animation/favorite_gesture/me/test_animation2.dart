@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fultter_dart_sample/log_util.dart';
 
-import 'favorite_gesture/favorite_animation_icon.dart';
-import 'favorite_gesture/favorite_gesture.dart';
+import '../favorite_animation_icon.dart';
+import '../favorite_gesture.dart';
 
 class TestAnimation2 extends StatefulWidget {
   @override
@@ -15,7 +15,7 @@ class TestAnimation2 extends StatefulWidget {
 class _TestAnimation2State extends State<TestAnimation2>
     with TickerProviderStateMixin {
   late AnimationController _animationController;
-  static const _duration = 600;
+  static const _duration = 6000;
 
   // 展示的进度值为0.1
   static const double appearValue = 0.1;

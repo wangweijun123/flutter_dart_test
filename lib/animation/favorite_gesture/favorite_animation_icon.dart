@@ -28,7 +28,7 @@ class _FavoriteAnimationIconState extends State<FavoriteAnimationIcon>
   // 消失的进度值为0.8
   static const double dismissValue = 0.8;
 
-  static const int _duration = 600;
+  static const int _duration = 6000;
   late AnimationController _animationController;
 
   final double angle = pi / 10 * (2 * Random().nextDouble() - 1);
@@ -41,7 +41,8 @@ class _FavoriteAnimationIconState extends State<FavoriteAnimationIcon>
       duration: const Duration(milliseconds: _duration),
       vsync: this,
     );
-
+    myPrint(
+        'xxxxxx _FavoriteAnimationIconState initState _animationController = ${_animationController.hashCode}');
     _animationController.addListener(() {
       myPrint('Animation listener 刷新 ...');
       setState(() {});
