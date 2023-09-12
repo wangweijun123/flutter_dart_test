@@ -6,6 +6,7 @@ import 'package:fultter_dart_sample/model/todo.dart';
 import 'package:fultter_dart_sample/video_list/widget/video_list.dart';
 import 'animation/test_animation.dart';
 import 'animation/favorite_gesture/me/test_animation2.dart';
+import 'bmi_calculator/screens/input_page.dart';
 import 'camera/camera_page.dart';
 import 'easy_refresh_list/cdn/test_page_state.dart';
 import 'easy_refresh_list/easy_refresh_list.dart';
@@ -125,6 +126,24 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
         child: Column(children: [
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
+
+          ElevatedButton(
+            child: const Text('bmi 计算器'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MaterialApp(
+                    theme: ThemeData.dark().copyWith(
+                      primaryColor: Color(0xFF0A0E21),
+                      scaffoldBackgroundColor: Color(0xFF0A0E21),
+                    ),
+                    home: InputPage(),
+                  ),
+                ),
+              );
+            },
+          ),
 
           ElevatedButton(
             child: const Text('pageView 测试'),
