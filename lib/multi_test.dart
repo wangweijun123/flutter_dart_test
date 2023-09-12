@@ -35,6 +35,8 @@ import 'shopping_list_item.dart';
 import 'use_dio_file_download.dart';
 import 'use_shared_preferences.dart';
 import 'test_layout.dart';
+import 'visible/main.dart';
+import 'visible/me/test_visiable.dart';
 
 // import 'package:matrix4_transform/matrix4_transform.dart';
 
@@ -126,6 +128,33 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
         child: Column(children: [
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
+
+          ElevatedButton(
+            child: const Text('visiable 测试 me'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => TestVisiable(),
+                ),
+              );
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('visiable 测试'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MaterialApp(
+                    theme: ThemeData.dark(),
+                    home: StoryPage(),
+                  ),
+                ),
+              );
+            },
+          ),
 
           ElevatedButton(
             child: const Text('bmi 计算器'),
