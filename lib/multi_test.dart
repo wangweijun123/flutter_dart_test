@@ -33,6 +33,7 @@ import 'page_view/page_view_example.dart';
 import 'player/player_page.dart';
 import 'second_page.dart'; // 相对路径
 import 'shopping_list_item.dart';
+import 'todoey/main.dart';
 import 'use_dio_file_download.dart';
 import 'use_shared_preferences.dart';
 import 'test_layout.dart';
@@ -129,6 +130,18 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
         child: Column(children: [
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
+
+          ElevatedButton(
+            child: const Text('任务列表'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyAppDateProvider(),
+                ),
+              );
+            },
+          ),
 
           ElevatedButton(
             child: const Text('天气app测试'),
