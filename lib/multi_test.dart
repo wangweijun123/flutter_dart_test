@@ -8,6 +8,7 @@ import 'animation/test_animation.dart';
 import 'animation/favorite_gesture/me/test_animation2.dart';
 import 'bmi_calculator/screens/input_page.dart';
 import 'camera/camera_page.dart';
+import 'clima/screens/loading_screen.dart';
 import 'easy_refresh_list/cdn/test_page_state.dart';
 import 'easy_refresh_list/easy_refresh_list.dart';
 import 'easy_refresh_list/sample_by_github/copy/example.dart';
@@ -128,6 +129,21 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
         child: Column(children: [
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
+
+          ElevatedButton(
+            child: const Text('天气app测试'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MaterialApp(
+                    theme: ThemeData.dark(),
+                    home: LoadingScreen(),
+                  ),
+                ),
+              );
+            },
+          ),
 
           ElevatedButton(
             child: const Text('visiable 测试 me'),
