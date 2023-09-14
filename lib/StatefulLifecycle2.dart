@@ -2,18 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'StatefulLifecycle2.dart';
 import 'log_util.dart';
 
 // ctrol + enter 修改成StatefulWidget
-class TestStatefulLifecycle extends StatefulWidget {
-  const TestStatefulLifecycle({super.key});
+class TestStatefulLifecycle2 extends StatefulWidget {
+  const TestStatefulLifecycle2({super.key});
 
   @override
-  State<TestStatefulLifecycle> createState() => _TestStatefulLifecycleState();
+  State<TestStatefulLifecycle2> createState() => _TestStatefulLifecycle2State();
 }
 
-class _TestStatefulLifecycleState extends State<TestStatefulLifecycle> {
+class _TestStatefulLifecycle2State extends State<TestStatefulLifecycle2> {
   int num = 0;
   // 常量如果在类级别，需要加 static
   static const platform = MethodChannel('samples.flutter.dev/battery');
@@ -45,20 +44,20 @@ class _TestStatefulLifecycleState extends State<TestStatefulLifecycle> {
   @override
   void initState() {
     super.initState();
-    myPrint("_TestStatefulLifecycleState $hashCode initState ...");
+    myPrint("_TestStatefulLifecycle2State $hashCode initState ...");
     registerMethod();
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    myPrint("_TestStatefulLifecycleState $hashCode didChangeDependencies ...");
+    myPrint("_TestStatefulLifecycle2State $hashCode didChangeDependencies ...");
   }
 
   @override
-  void didUpdateWidget(covariant TestStatefulLifecycle oldWidget) {
+  void didUpdateWidget(covariant TestStatefulLifecycle2 oldWidget) {
     super.didUpdateWidget(oldWidget);
-    myPrint("_TestStatefulLifecycleState $hashCode didUpdateWidget ...");
+    myPrint("_TestStatefulLifecycle2State $hashCode didUpdateWidget ...");
   }
 
   // 需要快点进入注册这个方法，不然dart端还没有注册， kotlin以及发送了
@@ -77,25 +76,25 @@ class _TestStatefulLifecycleState extends State<TestStatefulLifecycle> {
   @override
   void activate() {
     super.activate();
-    myPrint("_TestStatefulLifecycleState $hashCode activate ...");
+    myPrint("_TestStatefulLifecycle2State $hashCode activate ...");
   }
 
   @override
   void deactivate() {
     super.deactivate();
     // state这个对象被移除
-    myPrint("_TestStatefulLifecycleState $hashCode deactivate ...");
+    myPrint("_TestStatefulLifecycle2State $hashCode deactivate ...");
   }
 
   @override
   void dispose() {
     super.dispose();
-    myPrint("_TestStatefulLifecycleState $hashCode dispose ...");
+    myPrint("_TestStatefulLifecycle2State $hashCode dispose ...");
   }
 
   @override
   Widget build(BuildContext context) {
-    myPrint("_TestStatefulLifecycleState $hashCode build ...");
+    myPrint("_TestStatefulLifecycle2State $hashCode build ...");
     // 放到子控件的名字上，按下 alt + entry 来新增加一个父层次
     return Scaffold(
       body: SafeArea(
@@ -104,17 +103,6 @@ class _TestStatefulLifecycleState extends State<TestStatefulLifecycle> {
             buildSingleColumn(),
             buildSingleRow(),
             buildBattery(),
-            ElevatedButton(
-              child: const Text('测试跳转生命周期以及返回 ....'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => TestStatefulLifecycle2(),
-                  ),
-                );
-              },
-            ),
           ],
         ),
       ),

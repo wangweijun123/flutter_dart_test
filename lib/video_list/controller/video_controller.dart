@@ -29,10 +29,12 @@ class VideoController {
   //   int playCount = 0;
 
   Future<List<VideoModel>> _fetchVideoList() {
-    testPerson();
+    // testPerson();
 
     // Imagine that this function is more complex and slow.
     return Future.delayed(const Duration(seconds: 1), () {
+      myPrint(' 耗时函数体 ... ');
+
       List<VideoModel> result = [];
       final List<dynamic> dataList = jsonDecode(jsonArray);
       for (dynamic jsonItem in dataList) {

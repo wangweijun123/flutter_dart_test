@@ -2,6 +2,7 @@ import 'dart:isolate';
 
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:fultter_dart_sample/log_util.dart';
 import 'package:fultter_dart_sample/model/todo.dart';
 import 'package:fultter_dart_sample/video_list/widget/video_list.dart';
 import 'animation/test_animation.dart';
@@ -650,6 +651,7 @@ class _IsolatePageState extends State<IsolatePage> {
   @override
   void initState() {
     super.initState();
+    myPrint('load data ...');
     loadData();
   }
 
@@ -692,13 +694,14 @@ class _IsolatePageState extends State<IsolatePage> {
     );
   }
 
+  // isolate 注意会增加内存的，少用，
   Future<void> loadData() async {
     ReceivePort receivePort = ReceivePort();
     await Isolate.spawn(dataLoader, receivePort.sendPort);
 
     // The 'echo' isolate sends its SendPort as the first message.
     SendPort sendPort = await receivePort.first;
-
+    myPrint('sendReceive ...');
     List msg = await sendReceive(
       sendPort,
       'https://jsonplaceholder.typicode.com/posts',

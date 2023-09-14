@@ -14,6 +14,11 @@ interface class Vehicle3 {
   }
 }
 
+// dart 中的接口相当于 java 中的接口
+abstract class Vehicle4 {
+  void moveForward(int meters);
+}
+
 /* 可以在本类中集成 */
 class Car3 extends Vehicle3 {
   int passengers = 4;

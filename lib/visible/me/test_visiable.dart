@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../log_util.dart';
+
 class TestVisiable extends StatefulWidget {
   @override
   State<TestVisiable> createState() => _TestVisiableState();
@@ -39,5 +41,18 @@ class _TestVisiableState extends State<TestVisiable> {
         ),
       ),
     );
+  }
+
+  @override
+  void activate() {
+    super.activate();
+    myPrint("_TestStatefulLifecycleState $hashCode activate ...");
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    // state这个对象被移除
+    myPrint("_TestStatefulLifecycleState $hashCode deactivate ...");
   }
 }

@@ -39,8 +39,32 @@ class HomePage extends StatelessWidget {
                 print('更新username   ddddddddd');
                 c.updateUserName();
               }),
+          ElevatedButton(
+              // 不是叠加
+              child: const Text("两个异步任务是并行的吗，时间是叠加的吗?"),
+              onPressed: () {
+                testDelay();
+              }),
         ]),
         floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add), onPressed: c.increment));
+  }
+
+  void testDelay() {
+    myPrint('click button ...');
+    delayExcute(3);
+    delayExcute(2);
+  }
+
+  // 模拟耗时任务，多个任务是在线程池执行，而调用端只是获取结果而已，不用担心线程的问题了，简单多了
+  // io, net 都这样写就行了把
+
+  Future<void> delayExcute(int num) async {
+    // await 是阻塞当前函数，不阻塞调用栈上层
+    var order = await Future.delayed(
+      Duration(seconds: num),
+      () => 'time = $num',
+    );
+    myPrint('Your order is: $order');
   }
 }

@@ -21,6 +21,7 @@ class _VideoListState extends State<VideoList> {
         myPrint('refresh ....');
       });
     });
+    myPrint('after fetchVideoList....');
   }
 
   @override
