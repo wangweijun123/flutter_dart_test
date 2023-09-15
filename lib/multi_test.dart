@@ -14,6 +14,9 @@ import 'easy_refresh_list/cdn/test_page_state.dart';
 import 'easy_refresh_list/easy_refresh_list.dart';
 import 'easy_refresh_list/sample_by_github/copy/example.dart';
 import 'easy_refresh_list/sample_by_github/example.dart';
+import 'jike/layout_test.dart';
+import 'jike/list_view_youhua.dart';
+import 'jike/listview_header.dart';
 import 'listgridview/list_or_grid_test.dart';
 import 'listview.dart';
 import 'nested/nested_scroll_view_test3.dart';
@@ -131,6 +134,18 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
         child: Column(children: [
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
+
+          ElevatedButton(
+            child: const Text('布局测试'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LayoutTest(),
+                ),
+              );
+            },
+          ),
 
           ElevatedButton(
             child: const Text('任务列表'),
@@ -458,6 +473,27 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
                     builder: (context) => const ListviewPage(
                           todo: Todo('this is title', 'this is desc'),
                         )),
+              );
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('listview 优化 test'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ListviewYouhuaTest()),
+              );
+            },
+          ),
+
+          //
+          ElevatedButton(
+            child: const Text('listview header test'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ListviewHeaderTest()),
               );
             },
           ),

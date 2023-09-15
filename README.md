@@ -61,12 +61,45 @@ jsbrige , h5 通信，提供给h5的系统能力， 也就是Hybrid
 
 在构造函数中Widget还未生成，所以只能做一些参数传入的处理，initState中可以做初始化State的变量的操作。
 
+源码或者 arr 嵌入到 android 
+
+创建一个框架，把 Flutter 引擎、已编译的 Dart 代码和所有 Flutter 插件都放进去 这种方式你可以手动嵌入这个框架，
+并在 Xcode 中更改现有的应用的构建设置。如果不想要求开发团队的每一位成员都在本地安装 
+Flutter SDK 和 Cocoapods，这种方式比较适用。
 
 
 
+单子widget容器， container
+
+多子children 容器, column row( 方向，大小)
+层叠 Widget 布局：Stack 与 Positioned
+
+
+Stack(Positioned)摆放子widget，想对于父控件, 这两个是连用,Positioned 控件只能在 Stack 中使用
+
+column的大小: 父widget 与 子widget， mainsize 三个来决定
+Expanded 来按照比例 设置widget大小
+
+
+自定义widget： 组装基本widget 与 自绘使用 CustomPainter
+
+1.大部分都是非可视的容器，并不参与绘制；对于非透明的视图叠加，Flutter在绘制完毕后会做图层合并的
 
 
 
+请问下，再混合开发的场景下,module类型的对于root Widget，我们必须使用MaterialApp或者CupertinoApp二选一么？如果不使用这两个基础的widgetApp，
+除了不能享受封装好的Theme、封装好的Widget组件这些便利外，是否有无法实现的基础功能（比如在iOS中的右滑返回等等）？ 同时想问下目前国内很多App在
+安卓上的表现都不是Material风格的，同时也不完全是Cupertino风格，所以在实际应用中，主流的做
+法是使用 MaterialApp/CupertinoApp/完全自定义 这三种的哪一种呢？以及在开发过程中的是否有什么弊端呢？
 
+
+作者回复: MaterialApp和CupertinoApp封装了一些基本的App功能，比如导航栈管理、屏幕管理，国际化，以及对应的脚手架等，自己实现没有必要也基本不可能。
+样式就是一个配置而已，你可以自己定义不同平台的配置规则（具体参考夜间模式这一节）。另外他俩对Android/iOS的关键设计差异
+（如导航栏样式、状态栏样式、弹窗样式等），在框架内就进行了区分实现，所以如果你不定制样式，也无需过多担心在iOS上长得太像Android。
+
+Flutter其中一个游戏引擎flame ， 作者回复: 对，通过Canvas
+
+
+跨组件之间传递数据:  
 
 
