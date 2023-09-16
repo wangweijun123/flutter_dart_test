@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:fultter_dart_sample/log_util.dart';
 import 'package:fultter_dart_sample/multi_test.dart';
@@ -6,8 +8,31 @@ import 'package:get/get.dart';
 import '../other/other_page.dart';
 import 'home_page_controller.dart';
 
+// Widget _defaultErrorWidgetBuilder(FlutterErrorDetails details) {
+//   print('显示自定义的error page');
+//   String message =
+//       '${details.exception}\nSee also: https://flutter.dev/docs/testing/errors';
+//
+//   final Object exception = details.exception;
+//   return ErrorWidget.withDetails(
+//       message: message, error: exception is FlutterError ? exception : null);
+// }
+
 // 应用的起点
-void main() => runApp(GetMaterialApp(home: HomePage()));
+void main() {
+  // 自定义错误界面不起作用
+  // ErrorWidget.builder = _defaultErrorWidgetBuilder;
+
+  runApp(GetMaterialApp(home: HomePage()));
+}
+
+// 使用捕获未catch 异常机制来启动app, 发现捕获不了，为什么???
+// void main() => runZoned<Future<Null>>(() async {
+//       runApp(MaterialApp(home: HomePage()));
+//     }, onError: (error, stackTrace) async {
+//       //Do sth for error
+//       print('app 入口获取到了未捕获异常 $error');
+//     });
 
 // 使用StatelessWidget并节省一些RAM，有了Get你可能不再需要使用StatefulWidget。
 class HomePage extends StatelessWidget {

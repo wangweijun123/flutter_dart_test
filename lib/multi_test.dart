@@ -14,6 +14,7 @@ import 'easy_refresh_list/cdn/test_page_state.dart';
 import 'easy_refresh_list/easy_refresh_list.dart';
 import 'easy_refresh_list/sample_by_github/copy/example.dart';
 import 'easy_refresh_list/sample_by_github/example.dart';
+import 'exception/exception_test.dart';
 import 'jike/layout_test.dart';
 import 'jike/list_view_youhua.dart';
 import 'jike/listview_header.dart';
@@ -136,6 +137,19 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
         child: Column(children: [
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
+
+          ElevatedButton(
+            child: const Text('捕获异常测试'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ExceptionTest(),
+                ),
+              );
+            },
+          ),
+
           ElevatedButton(
             child: const Text('主题theme切换测试'),
             onPressed: () {
