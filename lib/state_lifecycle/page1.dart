@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import './page2.dart';
 
 class Page1 extends StatefulWidget {
-  Page1({Key? key}) : super(key: key);
+  int startTime = 0;
+  int endTime = 0;
+
+  Page1({Key? key}) : super(key: key) {
+    //页面初始化时记录启动时间
+    startTime = DateTime.now().millisecondsSinceEpoch;
+  }
   _Page1State createState() => _Page1State();
 }
 
@@ -51,6 +57,9 @@ class _Page1State extends State<Page1> with WidgetsBindingObserver {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // 它会在当前 Frame 绘制完成后进行进行回调，并且只会回调一次，如果要再次监听则需要再设置一次。
       print("page1 单次Frame绘制回调"); //只回调一次
+      widget.endTime = DateTime.now().millisecondsSinceEpoch;
+      int timeSpend = widget.endTime - widget.startTime;
+      print("Page render time:${timeSpend} ms");
     });
 
     WidgetsBinding.instance.addPersistentFrameCallback((_) {

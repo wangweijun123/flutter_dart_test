@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import './page1.dart';
 
+void main() => runApp(StateLifeCycle());
 
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
+class StateLifeCycle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,8 +11,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: Page1()
-    );
+        home: Page1());
   }
 }
-

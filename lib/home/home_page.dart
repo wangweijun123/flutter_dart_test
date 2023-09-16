@@ -17,13 +17,28 @@ import 'home_page_controller.dart';
 //   return ErrorWidget.withDetails(
 //       message: message, error: exception is FlutterError ? exception : null);
 // }
+int totalPV = 0;
+
+class MyObserver extends NavigatorObserver {
+  @override
+  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    super.didPush(route, previousRoute);
+    totalPV++;
+    // 能获取之前的路由和current的路由
+    myPrint(
+        " 统计页面跳转次数 totalPV=$totalPV, route=${route.settings.name}, previousRoute=${previousRoute?.settings.name}");
+  }
+}
 
 // 应用的起点
 void main() {
   // 自定义错误界面不起作用
   // ErrorWidget.builder = _defaultErrorWidgetBuilder;
 
-  runApp(GetMaterialApp(home: HomePage()));
+  runApp(GetMaterialApp(
+    home: HomePage(),
+    navigatorObservers: [MyObserver()],
+  ));
 }
 
 // 使用捕获未catch 异常机制来启动app, 发现捕获不了，为什么???

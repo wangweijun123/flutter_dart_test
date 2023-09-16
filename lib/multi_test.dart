@@ -39,6 +39,7 @@ import 'page_view/page_view_example.dart';
 import 'player/player_page.dart';
 import 'second_page.dart'; // 相对路径
 import 'shopping_list_item.dart';
+import 'state_lifecycle/state_life_cycle.dart';
 import 'todoey/main.dart';
 import 'use_dio_file_download.dart';
 import 'use_shared_preferences.dart';
@@ -137,6 +138,18 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
         child: Column(children: [
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
+          //
+          ElevatedButton(
+            child: const Text('state 生命周期与帧率测试'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => StateLifeCycle(),
+                ),
+              );
+            },
+          ),
 
           ElevatedButton(
             child: const Text('捕获异常测试'),
