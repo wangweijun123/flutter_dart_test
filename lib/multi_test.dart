@@ -16,6 +16,7 @@ import 'easy_refresh_list/sample_by_github/copy/example.dart';
 import 'easy_refresh_list/sample_by_github/example.dart';
 import 'exception/exception_test.dart';
 import 'jike/eventbus/main.dart';
+import 'jike/eventbus/pass_param_to_child.dart';
 import 'jike/layout_test.dart';
 import 'jike/list_view_youhua.dart';
 import 'jike/listview_header.dart';
@@ -139,6 +140,19 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
         child: Column(children: [
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
+          //
+
+          ElevatedButton(
+            child: const Text('数据通信(一个页面中，多个页面之间)'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PassParamToChild(),
+                ),
+              );
+            },
+          ),
 
           ElevatedButton(
             child: const Text('数据通信(一个页面中，多个页面之间)'),

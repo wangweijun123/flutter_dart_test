@@ -33,7 +33,8 @@ class _FirstPageState extends State<FirstPage> {
     super.initState();
   }
 
-  dispose() {
+  @override
+  void dispose() {
     subscription.cancel(); //State销毁时，清理注册
     super.dispose();
   }
