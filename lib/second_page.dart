@@ -24,6 +24,7 @@ class SecondRoute extends StatelessWidget {
         ),
         ElevatedButton(
           onPressed: () {
+            // 按下back键或button，都会回到 上一个界面调用的地方的await或者then
             Navigator.pop(context, 'this is result for back');
           },
           child: const Text('Go back with parmas'),

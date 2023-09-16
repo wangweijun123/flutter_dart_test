@@ -17,6 +17,7 @@ import 'easy_refresh_list/sample_by_github/example.dart';
 import 'jike/layout_test.dart';
 import 'jike/list_view_youhua.dart';
 import 'jike/listview_header.dart';
+import 'jike/theme_switch.dart';
 import 'listgridview/list_or_grid_test.dart';
 import 'listview.dart';
 import 'nested/nested_scroll_view_test3.dart';
@@ -121,6 +122,7 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
     );
 
     print("返回结果 result = $result");
+    // debugPrint
   }
 
   @override
@@ -134,6 +136,17 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
         child: Column(children: [
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
+          ElevatedButton(
+            child: const Text('主题theme切换测试'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyThemePage(),
+                ),
+              );
+            },
+          ),
 
           ElevatedButton(
             child: const Text('布局测试'),

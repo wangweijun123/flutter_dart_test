@@ -20,6 +20,8 @@ version: 1.0.0+1
 
 environment:
   sdk: '>=3.1.0 <4.0.0'
+  # dart sdk
+
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -79,6 +81,9 @@ dev_dependencies:
 
   geolocator: ^10.0.1
 #  flutter_spinkit: ^3.1.0
+  event_bus: ^2.0.0
+
+#  flutter_bugly:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 void test() {
   // List<Object>
   var arr = [1, 2, 's'];
@@ -167,6 +169,19 @@ void testShop() {
   ShoppingCart sc2 = ShoppingCart(name: '李四');
   sc2.bookings = [Item('香蕉', 15.0), Item('西瓜', 40.0)];
   print(sc2.getInfo());
+}
+
+void est() {
+  scheduleMicrotask(() => print('This is a microtask'));
+}
+
+void testFutrue() {
+  Future(() => print('Running in Future 1')); //下一个事件循环输出字符串
+
+  //上一个事件循环结束后，连续输出三段字符串
+  // Future(() => print('Running in Future 2'))
+  //     .then((_) => print('and then 1'))
+  // .then((value) => print('and then 2’))
 }
 
 void main() {
