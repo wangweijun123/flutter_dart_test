@@ -25,6 +25,21 @@ void testFunction() {
   printInfo(y, f); // 输出 0 is Zero: true
 }
 
+int add(int number1, int number2) {
+  //判断整数是否为0
+  return number1 + number2;
+}
+
+void printInfo2(int n1, int n2, Function xxx) {
+  //用check函数来判断整数是否为0
+  print("$n1 +  $n2 = ${xxx(n1, n2)}");
+}
+
+void testFunction2() {
+  Function f = add;
+  printInfo2(10, 22, f);
+}
+
 //要达到可选命名参数的用法，那就在定义函数的时候给参数加上 {}
 void enable1Flags({required bool bold, bool? hidden}) =>
     print("$bold , $hidden");
@@ -184,13 +199,25 @@ void testFutrue() {
   // .then((value) => print('and then 2’))
 }
 
+void testMap() {
+  Map<String, Object> map1 = {'name': 'duanxia', 'age': 27};
+  var name = map1['name'];
+  print('name.runtimeType= ${name.runtimeType}');
+  if (name is String) {
+    print('$name is String');
+  }
+}
+
 void main() {
-  testShop();
+  // testMap();
+  // testShop();
 
   // testExtendAndImplements();
 
   // testClass();
 
   // testFunction();
+
+  testFunction2();
   // test();
 }

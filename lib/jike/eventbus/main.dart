@@ -3,9 +3,9 @@ import 'count_container.dart';
 import 'notification_widget.dart';
 import 'event_bus_page.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(DataManageTest());
 
-class MyApp extends StatelessWidget {
+class DataManageTest extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

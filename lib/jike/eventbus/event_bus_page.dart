@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:event_bus/event_bus.dart';
 import 'dart:async';
 
+import 'package:fultter_dart_sample/log_util.dart';
+
 class CustomEvent {
   String msg;
   CustomEvent(this.msg);
 }
 
-//建立公共的event bus
+//建立公共的event bus, 全局变量，进程在一直在
 EventBus eventBus = new EventBus();
 
 class FirstPage extends StatefulWidget {
@@ -20,6 +22,7 @@ class _FirstPageState extends State<FirstPage> {
   late StreamSubscription subscription;
   @override
   void initState() {
+    myPrint('eventBus.hashCode = ${eventBus.hashCode}');
     //监听CustomEvent事件，刷新UI
     subscription = eventBus.on<CustomEvent>().listen((event) {
       print(event);

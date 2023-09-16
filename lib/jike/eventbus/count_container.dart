@@ -8,6 +8,7 @@ class CounterPage extends StatefulWidget {
 }
 
 class _CounterPageState extends State<CounterPage> {
+  // 这是父widget
   int count = 0;
 
   void _incrementCounter() => setState(() {
@@ -25,10 +26,8 @@ class _CounterPageState extends State<CounterPage> {
 }
 
 class CountContainer extends InheritedWidget {
-  // context.getInheritedWidgetOfExactType() 把这个换了，不确定是否有影响
-  static CountContainer of(BuildContext context) =>
-      context.getInheritedWidgetOfExactType as CountContainer;
-  // static CountContainer of(BuildContext context) => context.inheritFromWidgetOfExactType(CountContainer) as CountContainer;
+  static CountContainer? of(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<CountContainer>();
 
   final _CounterPageState model;
 
@@ -45,19 +44,20 @@ class CountContainer extends InheritedWidget {
   bool updateShouldNotify(CountContainer oldWidget) => model != oldWidget.model;
 }
 
+// 这是子widget, 子widget使用了父widget的属性, 第二 子widget需要修改数据
 class Counter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    CountContainer state = CountContainer.of(context);
+    CountContainer? state = CountContainer.of(context);
 
     return Scaffold(
       appBar: AppBar(
         title: Text("InheritedWidget demo"),
       ),
       body: Text(
-        'You have pushed the button this many times: ${state.model.count}',
+        'You have pushed the button this many times: ${state?.model.count}',
       ),
-      floatingActionButton: FloatingActionButton(onPressed: state.increment),
+      floatingActionButton: FloatingActionButton(onPressed: state?.increment),
     );
   }
 }
