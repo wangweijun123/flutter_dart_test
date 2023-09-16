@@ -5,6 +5,7 @@ import 'package:fultter_dart_sample/log_util.dart';
 import 'package:fultter_dart_sample/multi_test.dart';
 import 'package:get/get.dart';
 
+import '../jike/eventbus/pass_param_to_child.dart';
 import '../other/other_page.dart';
 import 'home_page_controller.dart';
 
@@ -38,7 +39,25 @@ void main() {
   runApp(GetMaterialApp(
     home: HomePage(),
     navigatorObservers: [MyObserver()],
+    routes: {
+      'pass_param_to_child': (context) => PassParamToChild(),
+    },
+    onUnknownRoute: (RouteSettings setting) =>
+        MaterialPageRoute(builder: (context) => UnknownPage()),
   ));
+}
+
+class UnknownPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Unknown Screen'),
+      ),
+      body: ElevatedButton(
+          child: Text('Back'), onPressed: () => Navigator.pop(context)),
+    );
+  }
 }
 
 // 使用捕获未catch 异常机制来启动app, 发现捕获不了，为什么???

@@ -143,14 +143,17 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
           //
 
           ElevatedButton(
-            child: const Text('数据通信(一个页面中，多个页面之间)'),
+            child: const Text('传递参数到子widget'),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PassParamToChild(),
-                ),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => PassParamToChild(),
+              //   ),
+              // );
+
+              // 使用路径跳转
+              Navigator.pushNamed(context, 'pass_param_to_child');
             },
           ),
 
