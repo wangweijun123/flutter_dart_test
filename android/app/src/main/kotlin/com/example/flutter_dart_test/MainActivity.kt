@@ -23,6 +23,7 @@ class MainActivity: FlutterActivity() {
 
     override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
+        Log.d(TAG, "MainActivity configureFlutterEngine ..xxx..")
         val methodChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL);
         methodChannel.setMethodCallHandler {
             // This method is invoked on the main thread.

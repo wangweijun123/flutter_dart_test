@@ -7,7 +7,10 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  print('flutter_xxxx  flutter main');
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

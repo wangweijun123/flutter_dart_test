@@ -316,8 +316,13 @@ Widget  element  renderObject
 Widget 视图配置
 flutter 接管了 应用渲染层, 底层能力需要native
 
+methodchannel 解决flutter 无法实现系统能力的办法
+PlatformView 能将原生视图切入到 flutter widget树中渲染
 
 
+MainActivity configureFlutterEngine ....
+flutter_xxxx  flutter main
 
-
+flutter以一个module的形式嵌入原生工程
+ios 使用pod， android 使用 aar
 
