@@ -314,6 +314,7 @@ Widget 和 Element 是一一对应的，但 RenderObject 不是
 Widget  element  renderObject
 
 Widget 视图配置
+flutter 接管了 应用渲染层, 底层能力需要native
 
 
 
