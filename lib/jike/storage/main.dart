@@ -9,10 +9,10 @@ import 'package:flutter/foundation.dart';
 
 void main() {
   print('flutter_xxxx  flutter main');
-  runApp(MyApp());
+  runApp(StoreageTest());
 }
 
-class MyApp extends StatelessWidget {
+class StoreageTest extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

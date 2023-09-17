@@ -19,18 +19,22 @@ import io.flutter.plugin.common.MethodChannel
 class MainActivity: FlutterActivity() {
     // dart 与 kotlin，通道名字必须一致
     private val CHANNEL = "samples.flutter.dev/battery"
+    private val METHOD_GETBATTERYLEVEL = "getBatteryLevel"
+    private val METHOD_OPENNATIVEPAGE = "openNativePage"
     private val TAG = "flutter_xxxx"
 
+    // 方法在flutter enginer 配置完成之后调用，这个可以注册方法监听
     override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        Log.d(TAG, "MainActivity configureFlutterEngine ..xxx..")
+        Log.e(TAG, "MainActivity configureFlutterEngine ..xxx..")
         val methodChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL);
         methodChannel.setMethodCallHandler {
             // This method is invoked on the main thread.
                 call, result ->
-            if (call.method == "getBatteryLevel") {
-               var id = call.argument<String>("id")
-               var userName = call.argument<String>("userName")
+            Log.d(TAG,"call.method = ${call.method}");
+            if (call.method == METHOD_GETBATTERYLEVEL) {
+                var id = call.argument<String>("id")
+                var userName = call.argument<String>("userName")
                 Log.d(TAG, "从dart端传过来参数 id= $id, name=$userName")
                 val batteryLevel = getBatteryLevel()
 
@@ -38,6 +42,11 @@ class MainActivity: FlutterActivity() {
                     result.success(batteryLevel)
                 } else {
                     result.error("UNAVAILABLE", "Battery level not available.", null)
+                }
+            } else if (call.method == METHOD_OPENNATIVEPAGE){
+                runOnUiThread {
+                    Log.e(TAG, "MainActivity startActivity ...")
+                    startActivity(Intent(this, SecondActivity::class.java));
                 }
             } else {
                 result.notImplemented()

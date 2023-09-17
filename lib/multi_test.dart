@@ -17,9 +17,11 @@ import 'easy_refresh_list/sample_by_github/example.dart';
 import 'exception/exception_test.dart';
 import 'jike/eventbus/main.dart';
 import 'jike/eventbus/pass_param_to_child.dart';
+import 'jike/jump/jump_native_pge.dart';
 import 'jike/layout_test.dart';
 import 'jike/list_view_youhua.dart';
 import 'jike/listview_header.dart';
+import 'jike/storage/main.dart';
 import 'jike/theme_switch.dart';
 import 'listgridview/list_or_grid_test.dart';
 import 'listview.dart';
@@ -141,6 +143,29 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
           //
+          ElevatedButton(
+            child: const Text('跳转natvie page'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => TestJumpNativePage(),
+                ),
+              );
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('数据保存'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => StoreageTest(),
+                ),
+              );
+            },
+          ),
 
           ElevatedButton(
             child: const Text('传递参数到子widget'),
