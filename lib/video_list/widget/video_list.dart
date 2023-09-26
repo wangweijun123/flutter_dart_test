@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fultter_dart_sample/log_util.dart';
 
+import '../../video_list_detail/widget/video_list_detail.dart';
 import '../controller/video_controller.dart';
+import '../model/video_model.dart';
 
 class VideoList extends StatefulWidget {
   VideoController controller = VideoController();
@@ -45,34 +47,58 @@ class _VideoListState extends State<VideoList> {
         itemBuilder: (context, index) {
           var item = widget.controller.dataList![index];
 
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Stack(children: [
-              Image.asset('images/pic$index.jpg'),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Row(
-                  children: [
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Image.asset(
-                      'packages/player/assets/play.png',
-                      width: 10,
-                      height: 10,
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      item.id,
-                      style: const TextStyle(color: Colors.red),
-                    ),
-                  ],
-                ),
-              )
-            ]),
+          return GestureDetector(
+            onTap: () {
+              _jumpVideoDetail(index);
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Stack(children: [
+                Image.asset('images/pic$index.jpg'),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Row(
+                    children: [
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Image.asset(
+                        'packages/player/assets/play.png',
+                        width: 10,
+                        height: 10,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        item.playCount.toString(),
+                        style: const TextStyle(color: Colors.red),
+                      ),
+                    ],
+                  ),
+                )
+              ]),
+            ),
           );
         });
+  }
+
+  _jumpVideoDetail(int index) async {
+    myPrint("xxx = $index");
+
+    var model = widget.controller.dataList![index];
+    myPrint("model = ${model.hashCode}");
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => VideoListDetail(model),
+      ),
+    );
+
+    if (result is VideoModel) {
+      var r = result;
+      myPrint("r= ${r.hashCode} 收到已经改变的结果${r.playCount}");
+      setState(() {});
+    }
   }
 }
