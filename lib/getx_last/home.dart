@@ -3,6 +3,7 @@ import 'package:fultter_dart_sample/getx_last/list/third.dart';
 import 'package:fultter_dart_sample/log_util.dart';
 import 'package:get/get.dart';
 import 'controller.dart';
+import 'demo/test_list_part_page.dart';
 import 'second.dart';
 
 void main() => runApp(GetMaterialApp(home: Home()));
@@ -33,6 +34,15 @@ class Home extends StatelessWidget {
               onPressed: () {
                 myPrint('go to third ...');
                 Get.to(Third());
+              },
+            ),
+
+            //
+            ElevatedButton(
+              child: Text('ListView 局部数据更新使用 Demo'),
+              onPressed: () {
+                myPrint('...');
+                Get.to(TestListPartPage());
               },
             ),
           ],

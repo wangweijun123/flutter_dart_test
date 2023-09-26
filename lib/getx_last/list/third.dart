@@ -22,11 +22,17 @@ class Third extends StatelessWidget {
             itemCount: controller.list.length,
             itemBuilder: (context, index) {
               myPrint('item index = $index');
-              return Container(
-                  color: index % 2 == 0 ? Colors.redAccent : Colors.blue,
-                  width: double.infinity,
-                  height: 200,
-                  child: Text(controller.list[index].toString()));
+              return GestureDetector(
+                onTap: () {
+                  myPrint('click index = $index');
+                  controller.updateItem(controller.list[index]);
+                },
+                child: Container(
+                    color: index % 2 == 0 ? Colors.redAccent : Colors.blue,
+                    width: double.infinity,
+                    height: 200,
+                    child: Text(controller.list[index].toString())),
+              );
             })));
   }
 }

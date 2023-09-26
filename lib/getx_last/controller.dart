@@ -14,6 +14,7 @@ class Controller extends GetxController {
   final list = <User>[].obs;
 
   int num = 0;
+
   incrementList() {
     var temp = <User>[];
     for (int i = 0; i < 10; i++) {
@@ -21,5 +22,23 @@ class Controller extends GetxController {
       num++;
     }
     list.addAll(temp);
+  }
+
+  void updateItem(User user) {
+    for (var element in list) {
+      if (element.id == user.id) {
+        myPrint("修改");
+        element.name = '${user.id} 被修改了';
+        break;
+      }
+    }
+
+    printlist();
+  }
+
+  void printlist() {
+    for (var element in list) {
+      myPrint(element.toString());
+    }
   }
 }

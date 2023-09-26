@@ -9,6 +9,7 @@ class Page1 extends StatefulWidget {
     //页面初始化时记录启动时间
     startTime = DateTime.now().millisecondsSinceEpoch;
   }
+  @override
   _Page1State createState() => _Page1State();
 }
 
@@ -76,7 +77,7 @@ class _Page1State extends State<Page1> with WidgetsBindingObserver {
 
   /*
   *初始化时，在initState之后立刻调用
-  *当State的依赖关系发生变化时，会触发此接口被调用
+  *当State的依赖关系发生变化时(语言，主题)，会触发此接口被调用
   */
   @override
   void didChangeDependencies() {
@@ -104,6 +105,12 @@ class _Page1State extends State<Page1> with WidgetsBindingObserver {
         ),
       ),
     );
+  }
+
+  @override
+  void reassemble() {
+    // TODO: implement reassemble
+    super.reassemble();
   }
 
   //状态改变的时候会调用该方法,比如父类调用了setState
