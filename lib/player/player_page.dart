@@ -16,7 +16,8 @@ class _PlayerPageState extends State<PlayerPage> {
 
   @override
   Widget build(BuildContext context) {
-    const url = '/data/user/0/com.example.flutter_dart_test/cache/movie.mp4';
+    // const url = '/data/user/0/com.example.flutter_dart_test/cache/movie.mp4';
+    const url = 'asset:///asset/video/video1.mp4';
     var player = Player();
     // player.setCommonDataSource('https://www.w3schools.com/html/movie.mp4',
     //     autoPlay: true);

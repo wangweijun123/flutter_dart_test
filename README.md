@@ -330,6 +330,9 @@ ios 使用pod， android 使用 aar
 子渲染引擎
 
 
+不是一个空安全的库的解决 方案:
+flutter run --no-sound-null-safety
+
 
 
 
