@@ -50,8 +50,8 @@ class _VideoListMoocState extends State<VideoListMooc> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PlayerPage(),
-        settings: RouteSettings(arguments: _controller.model.url),
+        builder: (context) => PlayerPage(_controller.model.url),
+        // settings: RouteSettings(arguments: _controller.model.url),
       ),
     );
   }

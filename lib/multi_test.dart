@@ -397,7 +397,8 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PlayerPage(),
+                  builder: (context) =>
+                      const PlayerPage('asset:///asset/video/video1.mp4'),
                 ),
               );
             },
