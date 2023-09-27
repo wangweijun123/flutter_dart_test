@@ -33,20 +33,8 @@ class _VideoViewState extends State<VideoView> {
       onDoubleTap: onDoubleTap,
       onDoubleTapDown: onDoubleTapDown,
       child: Stack(children: [
-        // 注意这个对事件的处理
-        AbsorbPointer(
-          absorbing: true,
-          child: FijkView(
-            player: widget.player,
-          ),
-        ),
-
-        Container(
-          alignment: Alignment.center,
-          child: FijkView(
-            player: widget.player,
-          ),
-        ),
+        // 注意这个对事件的处理, 指定这个view不接受事件处理,拦截这个事件
+        AbsorbPointer(absorbing: true, child: FijkView(player: widget.player)),
 
         // center 占满了整个屏幕(除去appbar)
         // Center(

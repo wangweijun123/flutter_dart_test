@@ -48,6 +48,7 @@ import 'todoey/main.dart';
 import 'use_dio_file_download.dart';
 import 'use_shared_preferences.dart';
 import 'test_layout.dart';
+import 'video_page/video_list_mooc.dart';
 import 'visible/main.dart';
 import 'visible/me/test_visiable.dart';
 
@@ -371,6 +372,20 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
                 context,
                 MaterialPageRoute(
                   builder: (context) => VideoList(),
+                ),
+              );
+            },
+          ),
+
+          // VideoList
+
+          ElevatedButton(
+            child: const Text('视频列表(mooc)'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => VideoListMooc(),
                 ),
               );
             },
