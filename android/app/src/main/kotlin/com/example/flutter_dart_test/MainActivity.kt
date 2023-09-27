@@ -26,7 +26,7 @@ class MainActivity: FlutterActivity() {
     // 方法在flutter enginer 配置完成之后调用，这个可以注册方法监听
     override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        Log.e(TAG, "MainActivity configureFlutterEngine ..xxx..")
+        Log.e(TAG, "MainActivity configureFlutterEngine ..flutterEngine=${flutterEngine.hashCode()}")
         val methodChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL);
         methodChannel.setMethodCallHandler {
             // This method is invoked on the main thread.
@@ -35,7 +35,8 @@ class MainActivity: FlutterActivity() {
             if (call.method == METHOD_GETBATTERYLEVEL) {
                 var id = call.argument<String>("id")
                 var userName = call.argument<String>("userName")
-                Log.d(TAG, "从dart端传过来参数 id= $id, name=$userName")
+                val  age = call.argument<Int>("age")
+                Log.d(TAG, "从dart端传过来参数 id= $id, name=$userName, age= $age")
                 val batteryLevel = getBatteryLevel()
 
                 if (batteryLevel != -1) {
@@ -53,10 +54,10 @@ class MainActivity: FlutterActivity() {
             }
         }
 
-
+        Log.d(TAG, "5秒后给dart 发送消息....")
         Handler(Looper.getMainLooper()).postDelayed({
-            Log.d(TAG, "给dart 发送消息")
             val argus = mapOf<String, String>("width" to "100", "height" to "300")
+            Log.d(TAG, "给dart 发送消息, invoke ")
             methodChannel.invokeMethod("getDartVersion", argus, object : MethodChannel.Result{
                 override fun success(result: Any?) {
                     Log.d(TAG, "success , result=$result")

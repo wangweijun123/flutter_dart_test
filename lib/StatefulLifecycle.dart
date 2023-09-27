@@ -15,7 +15,7 @@ class TestStatefulLifecycle extends StatefulWidget {
 
 class _TestStatefulLifecycleState extends State<TestStatefulLifecycle> {
   int num = 0;
-  // 常量如果在类级别，需要加 static
+  // 常量如果在类级别，需要加 static,  dart 与 kotlin、java的桥梁
   static const platform = MethodChannel('samples.flutter.dev/battery');
   // Get battery level.
   String _batteryLevel = 'Unknown battery level.';
@@ -29,7 +29,7 @@ class _TestStatefulLifecycleState extends State<TestStatefulLifecycle> {
   Future<void> _getBatteryLevel() async {
     String batteryLevel;
     try {
-      var argments = {"id": "010", "userName": "wwj"};
+      var argments = {"id": "010", "userName": "wwj", "age": 100};
       final int result =
           await platform.invokeMethod('getBatteryLevel', argments);
       batteryLevel = 'Battery level at $result % .';
@@ -62,6 +62,7 @@ class _TestStatefulLifecycleState extends State<TestStatefulLifecycle> {
   }
 
   // 需要快点进入注册这个方法，不然dart端还没有注册， kotlin以及发送了
+  // 但是这个消息一致存在, dart 端注册之后就会立马收到
   void registerMethod() {
     platform.setMethodCallHandler((call) async {
       if (call.method == "getDartVersion") {
