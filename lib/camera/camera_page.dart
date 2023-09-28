@@ -74,8 +74,80 @@ class _CameraPageState extends State<CameraPage> {
               height: 28,
             ),
           ),
-        )
+        ),
+
+        Align(
+          alignment: Alignment.topRight,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 60.0, right: 30.0),
+            child: Column(
+              children: [
+                _buildIcon(Assets.image.rotate.path, '翻转',
+                    () => cameraPageController.onSwitchCamera()),
+                SizedBox(height: 16),
+                _buildIcon(
+                    Assets.image.clock.path,
+                    '倒计时',
+                    () => Future.delayed(Duration(seconds: 3),
+                        () => cameraPageController.takePhotoAndUpload())),
+                SizedBox(height: 16),
+                Obx(() => _buildIcon(
+                    cameraPageController.flash
+                        ? Assets.image.flashOn.path
+                        : Assets.image.flashOff.path,
+                    '闪光灯',
+                    () => cameraPageController.onSwitchFlash())),
+              ],
+            ),
+          ),
+        ),
+
+        // 拍照
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 80),
+            child: GestureDetector(
+              onTap: () => cameraPageController.takePhotoAndUpload(),
+              child: Obx(() => Container(
+                    height: 80,
+                    width: 80,
+                    // 装饰
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(40)),
+                      color: cameraPageController.recording
+                          ? Colors.grey
+                          : Colors.redAccent,
+                      border: Border.all(width: 4, color: Colors.white),
+                    ),
+
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 17, horizontal: 22),
+                      child: TImage(Assets.image.flashOn.path,
+                          height: 33, width: 33),
+                    ),
+                    // child: TImage(Assets.image.flashOn.path, height: 33, width: 33),
+                  )),
+            ),
+          ),
+        ),
       ],
     );
+  }
+
+  /// 构建控制Button，图片+文本，垂直结构
+  Widget _buildIcon(String iconPath, String title, GestureTapCallback? onTap) {
+    myPrint("build title = $title");
+    return GestureDetector(
+        onTap: onTap,
+        child: Column(children: [
+          TImage(iconPath, width: 25, height: 25),
+          Text(title,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  decoration: TextDecoration.none))
+        ]));
   }
 }
