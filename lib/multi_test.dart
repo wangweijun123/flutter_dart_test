@@ -143,6 +143,19 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
         child: Column(children: [
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
+
+          ElevatedButton(
+            child: const Text('拍照'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CameraPage(),
+                ),
+              );
+            },
+          ),
+
           //
           ElevatedButton(
             child: const Text('跳转natvie page'),
@@ -348,18 +361,6 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
                 context,
                 MaterialPageRoute(
                   builder: (context) => SetStateTest(),
-                ),
-              );
-            },
-          ),
-
-          ElevatedButton(
-            child: const Text('拍照'),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CameraApp(),
                 ),
               );
             },

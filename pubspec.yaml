@@ -72,6 +72,12 @@ dev_dependencies:
   player:
     path: player
 
+  # 因为中国网络问题，没法下载
+#  player:
+#    git:
+#      url: https://github.com/hust-MC/flutter_player.git
+#      ref: master
+
   json_serializable: ^6.7.1
   json_annotation: ^4.8.1
 

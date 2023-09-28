@@ -22,4 +22,17 @@ class MyGetXController extends GetxController {
     myPrint('setState secondTxt = $secondTxt');
     _secondTxt.value = secondTxt;
   }
+
+  // obs 监听一个可以为null的对象
+  var model = Rx<ModelMe?>(null);
+
+  void createModel() {
+    myPrint('创建ModelMe对象');
+    model.value = ModelMe("duanxia");
+  }
+}
+
+class ModelMe {
+  String name;
+  ModelMe(this.name);
 }

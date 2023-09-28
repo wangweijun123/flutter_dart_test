@@ -56,6 +56,18 @@ class BodyUi2 extends StatelessWidget {
               controller.changeSecondTxt();
             },
             child: Text('刷新第二个text')),
+
+        Obx(() => controller.model.value == null
+            ? Container(
+                child: const Text("mode is null"),
+              )
+            : Text(controller.model.value!.name)),
+
+        ElevatedButton(
+            onPressed: () {
+              controller.createModel();
+            },
+            child: Text('监听要给对象是否为null的变化')),
       ],
     );
   }

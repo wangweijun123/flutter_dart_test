@@ -1,85 +1,81 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:fultter_dart_sample/log_util.dart';
+import 'package:fultter_dart_sample/widget/t_image.dart';
 
-late List<CameraDescription> _cameras;
+import '../gen/assets.gen.dart';
+import 'camera_page_controller.dart';
+import 'package:get/get.dart';
 
 // Future<void> main() async {
 //   runApp(const CameraApp());
 // }
 
 /// CameraApp is the Main Application.
-class CameraApp extends StatefulWidget {
+class CameraPage extends StatefulWidget {
   /// Default Constructor
-  const CameraApp({super.key});
+  const CameraPage({super.key});
 
   @override
-  State<CameraApp> createState() => _CameraAppState();
+  State<CameraPage> createState() => _CameraPageState();
 }
 
-class _CameraAppState extends State<CameraApp> {
-  late CameraController controller;
-  bool isCameraInitialized = false;
+class _CameraPageState extends State<CameraPage> {
+  late CameraPageController cameraPageController;
 
   @override
   void initState() {
     super.initState();
     myPrint('before init camera'); //
-    initCamera();
+    cameraPageController = CameraPageController();
+    cameraPageController.initCamera();
     myPrint('after init camera');
-  }
-
-  void initCamera() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    myPrint('await init camera');
-    _cameras =
-        await availableCameras(); // 调用await后, initCamera函数会停止,会执行 initState()函数中的initCamera()的下一行
-    myPrint('finished init camera');
-    controller = CameraController(_cameras[0], ResolutionPreset.max);
-    controller.initialize().then((_) {
-      isCameraInitialized = true;
-      if (!mounted) {
-        return;
-      }
-      setState(() {
-        myPrint('刷新界面。。。 ');
-      });
-    }).catchError((Object e) {
-      if (e is CameraException) {
-        switch (e.code) {
-          case 'CameraAccessDenied':
-            // Handle access errors here.
-            break;
-          default:
-            // Handle other errors here.
-            break;
-        }
-      }
-    });
   }
 
   @override
   void dispose() {
-    controller.dispose();
+    cameraPageController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    myPrint('build ... ');
-    if (!isCameraInitialized) {
-      myPrint('相机还没有初始化 ');
-      return Container(
-        color: Colors.white,
-        child: const Center(
-          child: Text('初始化相机中 ....'),
+    myPrint(
+        'build ... cameraPageController.cameraController = ${cameraPageController.cameraController}');
+    return Stack(
+      children: [
+        // 相机视频预览区域
+        Container(
+          width: double.infinity,
+          height: double.infinity,
+          child: Obx(() {
+            return cameraPageController.cameraController == null
+                ? Container(
+                    color: Colors.white,
+                    child: const Center(
+                      child: Text('初始化相机中 ....'),
+                    ),
+                  )
+                : CameraPreview(cameraPageController.cameraController!);
+          }),
         ),
-      );
-    }
 
-    myPrint('相机初始化完成 ');
-    return MaterialApp(
-      home: CameraPreview(controller),
+        // close
+
+        GestureDetector(
+          onTap: () {
+            cameraPageController.onCloseTap(context);
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(left: 40.0, top: 60.0),
+            child: TImage(
+              Assets.image.close.path,
+              width: 28,
+              height: 28,
+            ),
+          ),
+        )
+      ],
     );
   }
 }
