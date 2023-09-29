@@ -409,6 +409,11 @@ class MyColor3 {
       : red = 0,
         green = 0,
         blue = 4;
+
+  MyColor3.red(this.red)
+      : green = 0,
+        blue = 4;
+
   @override
   String toString() {
     return "[blue = $blue]";

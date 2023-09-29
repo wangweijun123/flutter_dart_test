@@ -86,12 +86,24 @@ void testClass() {
 }
 
 class Point2 {
+  Point2() {
+    print("Point2 构造函数");
+  }
   num x = 0, y = 0;
   void printInfo() => print('($x,$y)');
 }
 
 //Vector继承自Point
 class Vector extends Point2 {
+  /**
+   *
+   *  日志如下：先调用父亲构造函数
+   *  Point2 构造函数
+      Vector构造函数
+   */
+  Vector() {
+    print("Vector构造函数");
+  }
   num z = 0;
   @override
   void printInfo() => print('($x,$y,$z)'); //覆写了printInfo实现
@@ -212,12 +224,12 @@ void main() {
   // testMap();
   // testShop();
 
-  // testExtendAndImplements();
+  testExtendAndImplements();
 
   // testClass();
 
   // testFunction();
 
-  testFunction2();
+  // testFunction2();
   // test();
 }
