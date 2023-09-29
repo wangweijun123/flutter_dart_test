@@ -27,6 +27,7 @@ class ShoppingCart extends Meta with PrintHelper {
   //默认初始化函数，转发至withCode函数
   ShoppingCart({myName}) : this.withCode(name: myName, code: null);
   //withCode初始化方法，使用语法糖和初始化列表进行赋值，并调用父类初始化方法
+  // 1.是声明时定义的，可以用this语法糖赋值；2.是继承来的，不能用this，需要把这个值交给super让父类赋值
   ShoppingCart.withCode({name, required this.code})
       : date = DateTime.now(),
         super(name, 0);

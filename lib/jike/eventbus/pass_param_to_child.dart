@@ -47,21 +47,24 @@ class ChildWidget extends StatefulWidget {
   ChildWidget(this.account);
 
   @override
-  State<ChildWidget> createState() => _ChildWidgetState();
+  State<ChildWidget> createState() {
+    myPrint('createState this = ${this.hashCode}');
+    return _ChildWidgetState();
+  }
 }
 
 class _ChildWidgetState extends State<ChildWidget> {
   void updateAccount() {
     setState(() {
       // 只刷新自己呀
-      myPrint('child change account');
+      myPrint('child change account widget = ${widget.hashCode}');
       widget.account++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    myPrint('child build ....');
+    myPrint('child build ...widget = ${widget.hashCode}.');
     return Container(
       child: Column(
         children: [

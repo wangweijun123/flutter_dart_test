@@ -15,15 +15,20 @@ class Page1 extends StatefulWidget {
 
 class _Page1State extends State<Page1> with WidgetsBindingObserver {
   //页面pop
+  @override
   Future<bool> didPopRoute() => Future<bool>.value(false);
   //页面push
+  @override
   Future<bool> didPushRoute(String route) => Future<bool>.value(false);
 
   //文本缩放系数变化
+  @override
   void didChangeTextScaleFactor() {}
   //系统亮度变化
+  @override
   void didChangePlatformBrightness() {}
   //本地化语言变化
+  @override
   void didChangeLocales(List<Locale>? locales) {}
   //App生命周期变化
   //监听App生命周期回调(从前台切换到后台state inactive -> hidden -> paused)
@@ -37,8 +42,10 @@ class _Page1State extends State<Page1> with WidgetsBindingObserver {
   }
 
   //内存警告回调
+  @override
   void didHaveMemoryPressure() {}
   //Accessibility相关特性回调
+  @override
   void didChangeAccessibilityFeatures() {}
   // 系统窗口相关改变回调，如旋转, 这是这个 WidgetsBindingObserver中回调
   @override
