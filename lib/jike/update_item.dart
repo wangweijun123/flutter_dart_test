@@ -23,6 +23,7 @@ class UpdatedItem extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(15, 0, 15, 0), //左边距和右边距为15
         child: Column(
             //Column控件用来垂直摆放子Widget
+            mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start, //水平方向距左对齐
             children: <Widget>[
               // todo 计算文本的高度

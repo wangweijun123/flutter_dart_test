@@ -388,5 +388,18 @@ widget     element(widget 引用， RenderObject 引用)     RenderObject  三�
 
 即刻老师的code
 
+D:\work\workspace\github\flutter_example\flutter_core_demo-master\core
+
 https://github.com/cyndibaby905/40_peformance_demo
+
+
+A  ---> B
+
+B ..... build  然后返回.A, 只调用A函数的销毁
+
+
+Widget 生命周期的实际承载者 State
+
+
+
 

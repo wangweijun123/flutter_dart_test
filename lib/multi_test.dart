@@ -21,6 +21,8 @@ import 'jike/jump/jump_native_pge.dart';
 import 'jike/layout_test.dart';
 import 'jike/list_view_youhua.dart';
 import 'jike/listview_header.dart';
+import 'jike/main.dart';
+import 'jike/richtext/rich_text_test.dart';
 import 'jike/storage/main.dart';
 import 'jike/theme_switch.dart';
 import 'listgridview/list_or_grid_test.dart';
@@ -143,6 +145,31 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
         child: Column(children: [
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
+          //
+
+          ElevatedButton(
+            child: const Text('即刻 listview'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => JikeListview(),
+                ),
+              );
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('富文本'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => RichTextTest(),
+                ),
+              );
+            },
+          ),
 
           ElevatedButton(
             child: const Text('拍照'),

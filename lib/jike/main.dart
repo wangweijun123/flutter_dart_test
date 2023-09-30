@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 void main() {
-  runApp(MyApp());
+  runApp(JikeListview());
 }
 
-class MyApp extends StatelessWidget {
+class JikeListview extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -107,6 +107,7 @@ class ScrollNotificationWidget extends StatelessWidget {
               },
               child: ListView.builder(
                 itemCount: 30, // 列表元素个数
+                itemExtent: 50,
                 itemBuilder: (context, index) =>
                     ListTile(title: Text("Index : $index")), // 列表项创建方法
               ),
