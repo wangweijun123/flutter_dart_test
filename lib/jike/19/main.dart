@@ -24,7 +24,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         body: TabBarView(
           physics: NeverScrollableScrollPhysics(),
@@ -32,6 +32,7 @@ class MyHomePage extends StatelessWidget {
             ListenerWidget(),
             DragWidget(),
             DoubleGestureWidget(),
+            DefaultGestureWidget(),
           ],
         ),
         bottomNavigationBar: TabBar(
@@ -47,7 +48,11 @@ class MyHomePage extends StatelessWidget {
             Tab(
               icon: Icon(Icons.perm_identity),
               text: "手势冲突",
-            )
+            ),
+            Tab(
+              icon: Icon(Icons.perm_identity),
+              text: "父子监听手势点击冲突的默认行为",
+            ),
           ],
           unselectedLabelColor: Colors.blueGrey,
           labelColor: Colors.blue,
@@ -151,5 +156,30 @@ class MultipleTapGestureRecognizer extends TapGestureRecognizer {
   @override
   void rejectGesture(int pointer) {
     acceptGesture(pointer);
+  }
+}
+
+/**
+ * 父子监听手势点击冲突的默认行为，在子widget上点击，只会响应子widge的ontap事件
+ */
+class DefaultGestureWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: GestureDetector(
+      onTap: () => print('DefaultGestureWidget parent tapped'),
+      child: Container(
+        color: Colors.pinkAccent,
+        child: Center(
+          child: GestureDetector(
+              onTap: () => print('DefaultGestureWidget Child tapped'),
+              child: Container(
+                color: Colors.blueAccent,
+                width: 200.0,
+                height: 200.0,
+              )),
+        ),
+      ),
+    ));
   }
 }
