@@ -121,7 +121,8 @@ class _LayoutTestState extends State<LayoutTest> {
               UpdatedItem(
                 model: UpdatedItemModel(
                     appDate: '12.12',
-                    appDescription: 'this is des',
+                    appDescription:
+                        'this is des,xxddddddddddddddddddddddddddddddddeeeeeeffffadfadfaczvzcv2333',
                     appIcon: 'images/pic1.jpg',
                     appName: 'google',
                     appSize: '18M',

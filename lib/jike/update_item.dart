@@ -10,11 +10,13 @@ class UpdatedItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(//用Column将上下两部分合体
+    return Column(
+        //用Column将上下两部分合体
+        crossAxisAlignment: CrossAxisAlignment.start, //水平方向距左对齐
         children: <Widget>[
-      buildTopRow(context), //上半部分
-      buildBottomRow(context) //下半部分
-    ]);
+          buildTopRow(context), //上半部分
+          buildBottomRow(context) //下半部分
+        ]);
   }
 
   Widget buildBottomRow(BuildContext context) {
@@ -42,7 +44,11 @@ class UpdatedItem extends StatelessWidget {
 
               // 5 优化布局，整个页面拆成多个有布局的哦，但是有GetX， obs 这个东西很好额， 把组件拆小
 
-              Text(model.appDescription), //更新文案
+              Text(
+                model.appDescription,
+                maxLines: 2,
+              ),
+              //更新文案
               Padding(
                   //Padding控件用来设置边距
                   padding: EdgeInsets.fromLTRB(0, 10, 0, 0), //上边距为10
@@ -68,7 +74,11 @@ class UpdatedItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center, //垂直方向居中对齐
           crossAxisAlignment: CrossAxisAlignment.start, //水平方向居左对齐
           children: <Widget>[
-            Text(model.appName, maxLines: 1), //App名字
+            Text(
+              model.appName,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ), //App名字
             Text(model.appDate, maxLines: 1), //App更新日期
           ],
         ),

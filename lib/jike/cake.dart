@@ -2,6 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+/**
+ *  自定义画笔
+ */
 class WheelPainter extends CustomPainter {
   // 设置画笔颜色
   Paint getColoredPaint(Color color) {
