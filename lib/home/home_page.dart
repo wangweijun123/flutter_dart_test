@@ -44,6 +44,13 @@ void main() {
     },
     onUnknownRoute: (RouteSettings setting) =>
         MaterialPageRoute(builder: (context) => UnknownPage()),
+    // theme: ThemeData(
+    //   //设置主题
+    //   brightness: Brightness.dark,
+    //   // 明暗模式为暗色
+    //   primaryColor: Colors.cyan,
+    //   //主色调为青色
+    // ),
   ));
 }
 

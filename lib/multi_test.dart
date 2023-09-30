@@ -16,6 +16,7 @@ import 'easy_refresh_list/sample_by_github/copy/example.dart';
 import 'easy_refresh_list/sample_by_github/example.dart';
 import 'exception/exception_test.dart';
 import 'jike/15/main.dart';
+import 'jike/19/main.dart';
 import 'jike/eventbus/main.dart';
 import 'jike/eventbus/pass_param_to_child.dart';
 import 'jike/jump/jump_native_pge.dart';
@@ -147,6 +148,17 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
           //
+          ElevatedButton(
+            child: const Text('手势'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => GestrueDectectTest(),
+                ),
+              );
+            },
+          ),
 
           ElevatedButton(
             child: const Text('自定义画笔'),
