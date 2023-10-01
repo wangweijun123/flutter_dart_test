@@ -9,7 +9,7 @@ class CustomEvent {
   CustomEvent(this.msg);
 }
 
-//建立公共的event bus, 全局变量，进程在一直在
+//建立公共的event bus, 全局变量，进程在一直在, 无需关心是否为父子widget，都可以发送消息,和java中oberava与oaberable是一致的
 EventBus eventBus = new EventBus();
 
 class FirstPage extends StatefulWidget {
@@ -61,7 +61,7 @@ class SecondPage extends StatelessWidget {
       ),
       body: ElevatedButton(
           child: Text('Fire Event'),
-          // 触发CustomEvent事件
+          // 触发CustomEvent事件  dynamic event
           onPressed: () => eventBus.fire(CustomEvent("hello"))),
     );
   }

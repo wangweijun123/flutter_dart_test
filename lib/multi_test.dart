@@ -17,6 +17,7 @@ import 'easy_refresh_list/sample_by_github/example.dart';
 import 'exception/exception_test.dart';
 import 'jike/15/main.dart';
 import 'jike/19/main.dart';
+import 'jike/animation/main.dart';
 import 'jike/eventbus/main.dart';
 import 'jike/eventbus/pass_param_to_child.dart';
 import 'jike/jump/jump_native_pge.dart';
@@ -138,6 +139,7 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    myPrint('build context = ${context.hashCode}');
     return Scaffold(
       appBar: AppBar(
         title: const Text('First Route'),
@@ -149,13 +151,31 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
           //
           ElevatedButton(
+            child: const Text('jike 动画'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (cxt) {
+                  myPrint(
+                      'jump cxt = ${cxt.hashCode}, context==cxt ? ${context == cxt}');
+                  return JikeAnimation(
+                    title: '动画',
+                  );
+                }),
+              );
+            },
+          ),
+
+          ElevatedButton(
             child: const Text('手势'),
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => GestrueDectectTest(),
-                ),
+                MaterialPageRoute(builder: (cxt) {
+                  myPrint(
+                      'jump cxt = ${cxt.hashCode}, context==cxt ? ${context == cxt}');
+                  return GestrueDectectTest();
+                }),
               );
             },
           ),

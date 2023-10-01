@@ -161,6 +161,7 @@ class MultipleTapGestureRecognizer extends TapGestureRecognizer {
 
 /**
  * 父子监听手势点击冲突的默认行为，在子widget上点击，只会响应子widge的ontap事件
+ * 但是可以处理在子组件上点击，父组件也可以接受到
  */
 class DefaultGestureWidget extends StatelessWidget {
   @override
@@ -171,13 +172,23 @@ class DefaultGestureWidget extends StatelessWidget {
       child: Container(
         color: Colors.pinkAccent,
         child: Center(
-          child: GestureDetector(
-              onTap: () => print('DefaultGestureWidget Child tapped'),
-              child: Container(
-                color: Colors.blueAccent,
-                width: 200.0,
-                height: 200.0,
-              )),
+          child: Column(
+            children: [
+              GestureDetector(
+                  onTap: () => print('DefaultGestureWidget Child tapped'),
+                  child: Container(
+                    color: Colors.blueAccent,
+                    width: 200.0,
+                    height: 200.0,
+                  )),
+              ElevatedButton(
+                child: const Text('手势'),
+                onPressed: () {
+                  print('DefaultGestureWidget ElevatedButton onPressed');
+                },
+              ),
+            ],
+          ),
         ),
       ),
     ));
