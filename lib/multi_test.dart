@@ -17,6 +17,9 @@ import 'easy_refresh_list/sample_by_github/example.dart';
 import 'exception/exception_test.dart';
 import 'jike/15/main.dart';
 import 'jike/19/main.dart';
+import 'jike/23/isolate_test.dart';
+import 'jike/24/main.dart';
+import 'jike/25/main.dart';
 import 'jike/animation/main.dart';
 import 'jike/eventbus/main.dart';
 import 'jike/eventbus/pass_param_to_child.dart';
@@ -150,6 +153,46 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
           //
+          ElevatedButton(
+            child: const Text('file, sp, db 测试'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (cxt) {
+                  return StorageTest(
+                    title: 'file, sp, db 测试',
+                  );
+                }),
+              );
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('即刻网络 test'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (cxt) {
+                  return JIkeNetwork(
+                    title: '即刻网络test',
+                  );
+                }),
+              );
+            },
+          ),
+
+          ElevatedButton(
+            child: const Text('isolate test'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (cxt) {
+                  return IsolateTest();
+                }),
+              );
+            },
+          ),
+
           ElevatedButton(
             child: const Text('jike 动画'),
             onPressed: () {
