@@ -31,6 +31,7 @@ import 'jike/main.dart';
 import 'jike/richtext/rich_text_test.dart';
 import 'jike/storage/main.dart';
 import 'jike/theme_switch.dart';
+import 'jike/provider/main.dart';
 import 'listgridview/list_or_grid_test.dart';
 import 'listview.dart';
 import 'nested/nested_scroll_view_test3.dart';
@@ -153,6 +154,19 @@ class _FirstRouteState extends State<FirstRoute> with TickerProviderStateMixin {
           Container(
               width: 150, height: 30, child: Text(Strings.welcomeMessage)),
           //
+
+          ElevatedButton(
+            child: const Text('provider 数据管理测试'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (cxt) {
+                  return JikeProviderTst();
+                }),
+              );
+            },
+          ),
+
           ElevatedButton(
             child: const Text('file, sp, db 测试'),
             onPressed: () {

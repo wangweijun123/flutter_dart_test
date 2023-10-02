@@ -5,27 +5,26 @@ import 'provider_demo.dart';
 import 'counter_model.dart';
 
 void main() {
-
-  runApp(MyApp());
+  runApp(JikeProviderTst());
 }
 
-
-
-class MyApp extends StatelessWidget {
+class JikeProviderTst extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(providers: [
-      Provider.value(value: 30.0),
-      ChangeNotifierProvider.value(value: CounterModel())
-    ],child: MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage()
-    ));
-
+    return MultiProvider(
+        providers: [
+          //需要共享的数据资源 1
+          Provider.value(value: 30.0),
+          //需要共享的数据资源 2
+          ChangeNotifierProvider.value(value: CounterModel())
+        ],
+        child: MaterialApp(
+            title: 'Flutter Demo',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            home: HomePage()));
   }
 }
 
@@ -43,8 +42,14 @@ class HomePage extends StatelessWidget {
         ),
         bottomNavigationBar: TabBar(
           tabs: [
-            Tab(icon: Icon(Icons.home),text: "Consumer",),
-            Tab(icon: Icon(Icons.rss_feed),text: "Provider",),
+            Tab(
+              icon: Icon(Icons.home),
+              text: "Consumer",
+            ),
+            Tab(
+              icon: Icon(Icons.rss_feed),
+              text: "Provider",
+            ),
           ],
           unselectedLabelColor: Colors.blueGrey,
           labelColor: Colors.blue,
@@ -54,7 +59,4 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
 }
-
-
