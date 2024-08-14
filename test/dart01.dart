@@ -1490,8 +1490,34 @@ void parseDataTime() {
   print(date.toString());
 }
 
+class MyBean2 {
+  int age;
+
+  MyBean2(this.age);
+}
+
+change(MyBean2 bean) {
+  bean.age = 20;
+}
+
+changeInt(int height) {
+  height = 170;
+}
+
+void testMyBean2() {
+  MyBean2 bean = MyBean2(10);
+  change(bean);
+  print(bean.age);
+
+  int myHeight = 100;
+  changeInt(myHeight);
+  print(myHeight);
+}
+
 void main() {
-  parseDataTime();
+  testMyBean2();
+
+  // parseDataTime();
 
   // testJsonDecode();
 
@@ -1606,6 +1632,6 @@ void main() {
   // testNull();
   // String? str;
   // upperCaseIt(str);
-  testCollection();
+  // testCollection();
   // testMyClass();
 }
