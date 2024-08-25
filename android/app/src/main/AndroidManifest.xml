@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- android:usesCleartextTraffic="true" 铭文通道  -->
     <application
         android:label="flutter_dart_test"
         android:name="${applicationName}"

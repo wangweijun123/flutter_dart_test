@@ -204,6 +204,7 @@ class _MinePageState extends State<MinePage>
     }
   }
 
+  // http://192.168.0.32:3000/images/banner/1.jpeg
   // 圆角头像
   Widget buildCircleConer2() {
     return Container(

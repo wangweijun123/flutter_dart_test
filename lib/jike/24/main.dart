@@ -60,6 +60,24 @@ class _JIkeNetworkState extends State<JIkeNetwork> {
     }
   }
 
+  nodeJsMockBackendDemo() async {
+    try {
+      Dio dio = Dio(); // 192.168.0.32
+      // var url = "https://jsonplaceholder.typicode.com/posts/1/comments";
+      // 就用id来访问
+      var url = "http://192.168.0.32:3000/getHomePageContent";
+      // var url = "http://10.0.2.2:3000/getHomePageContent";
+      // var url = "http://127.0.0.1:3000/getHomePageContent";
+      print('request url :$url');
+      var response = await dio.post(url,
+          options: Options(headers: {"user-agent": "Custom-UA"}));
+      var result = response.data.toString();
+      print('result = $result');
+    } catch (e) {
+      print('Error:$e');
+    }
+  }
+
   dioDemo() async {
     try {
       Dio dio = Dio();
@@ -226,6 +244,11 @@ class _JIkeNetworkState extends State<JIkeNetwork> {
               onPressed: () => dioDemo(),
             ),
             TextButton(
+              child: Text('node js  demo'),
+              onPressed: () => nodeJsMockBackendDemo(),
+            ),
+            buildCircleConer2(),
+            TextButton(
               child: Text('Dio 并发demo'),
               onPressed: () => dioParallDemo(),
             ),
@@ -272,6 +295,29 @@ class Student {
         score: parsedJson['score'],
         teacher: Teacher.fromJson(parsedJson['teacher']));
   }
+}
+
+//
+// 圆角头像
+Widget buildCircleConer2() {
+  // const String img =
+  //     'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg';
+
+  const String img = 'http://192.168.0.32:3000/images/banner/1.jpeg';
+  return Container(
+    margin: const EdgeInsets.fromLTRB(16, 138.5 - 30, 0, 0),
+    width: 100,
+    height: 100,
+    decoration: BoxDecoration(
+      image: const DecorationImage(
+        image: NetworkImage(img),
+        fit: BoxFit.cover,
+      ),
+      border: Border.all(width: 4, color: Colors.white),
+      // radius 半径
+      borderRadius: BorderRadius.circular(50),
+    ),
+  );
 }
 
 class Teacher {
