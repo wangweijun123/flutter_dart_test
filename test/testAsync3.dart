@@ -15,15 +15,18 @@ Future<List<String>> _fetchVideoList(String friendId) {
 // future implement
 void main() {
   _fetchUserId().then((userId) {
-    return _fetchFriendId(userId);
+    Future<String> friends = _fetchFriendId(userId);
+    print('friends = $friends');
+    return friends;
   }).then((friendId) {
-    return _fetchVideoList(friendId);
+    Future<List<String>> r = _fetchVideoList(friendId);
+    print('r = $r');
+    return r;
   }).then((videoList) {
     print('videoList = $videoList');
   });
-
+  print('main is end');
   sleep(const Duration(seconds: 6));
-  print('main');
 }
 
 // await　阻塞當前線程，
@@ -34,4 +37,5 @@ void main2() async {
   print('friendId = $friendId');
   var videoList = await _fetchVideoList(friendId);
   print('videoList = $videoList');
+  print('main is end');
 }

@@ -400,6 +400,12 @@ B ..... build  然后返回.A, 只调用A函数的销毁
 
 Widget 生命周期的实际承载者 State
 
+dev tools 网页版 调试ui 在哪里打开::
+android studio --> flutter performance ---> open devtools
 
+在chrome中，开启 select widget model , 在chrome中选择某一个widget， 
+手机app与 代码是同步的，也可以在手机上操作，双向绑定(有时候在手机上不灵敏)
+
+不一定要chrome， 直接在AS中打开flutter inspector, 选中 widget model
 
 
